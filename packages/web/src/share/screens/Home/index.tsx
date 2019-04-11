@@ -8,9 +8,6 @@ function Home() {
     <ScrollView style={styles.container}>
       <Suspense fallback={null}>
         <NewSong />
-      </Suspense>
-
-      <Suspense fallback={null}>
         <NewAlbum />
       </Suspense>
     </ScrollView>

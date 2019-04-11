@@ -12,7 +12,7 @@ function TabNav() {
         <View style={styles.icon}>
           <Home />
         </View>
-        <Text style={styles.text}>Home</Text>
+        <Text style={styles.text}>发现</Text>
       </Link>
       <Link
         style={{ flex: 1, alignItems: 'center', display: 'flex', flexDirection: 'column' }}
@@ -21,7 +21,7 @@ function TabNav() {
         <View style={styles.icon}>
           <Search />
         </View>
-        <Text style={styles.text}>Search</Text>
+        <Text style={styles.text}>搜索</Text>
       </Link>
     </View>
   );
