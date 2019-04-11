@@ -1,0 +1,19 @@
+{
+  "name": "@m/shared",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "/dist/index.js",
+  "scripts": {
+    "start": "nodemon",
+    "dev": "tsc",
+    "install": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.18.10",
+    "typescript": "^3.4.2"
+  }
+}

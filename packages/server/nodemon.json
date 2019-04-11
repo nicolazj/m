@@ -1,0 +1,6 @@
+{
+  "verbose": true,
+  "watch": ["src"],
+  "exec": "fkill :4000 -s && npm run dev",
+  "ext": "ts"
+}

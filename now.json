@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "name": "m",
+  "regions": ["hnd1"],
+  "builds": [
+    { "src": "packages/server/src/api/**/*.ts", "use": "@now/node" },
+    {
+      "src": "packages/web/package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/packages/server/src/api/$1",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "dest": "/packages/web/static/$1"
+    },
+    { "src": "/favicon.ico", "dest": "/packages/web/favicon.ico" },
+    { "src": "/asset-manifest.json", "dest": "/packages/web/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/packages/web/manifest.json" },
+    { "src": "/precache-manifest.(.*)", "dest": "/packages/web/precache-manifest.$1" },
+    {
+      "src": "/service-worker.js",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/packages/web/service-worker.js"
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/packages/web/index.html"
+    }
+  ]
+}
