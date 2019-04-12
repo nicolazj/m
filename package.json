@@ -8,7 +8,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "yarn workspaces run start --parallel"
+    "start": "yarn workspaces run start > log & tail -f log"
   },
   "keywords": [],
   "author": "",

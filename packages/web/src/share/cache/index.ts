@@ -58,7 +58,21 @@ function accessResult(resource: any, fetch: any, input: any, key: any) {
     return lru.access(entry);
   }
 }
+function writeResult(resource: any, key: any, result: any) {
+  let entriesForResource = entries.get(resource);
+  if (entriesForResource === undefined) {
+    entriesForResource = new Map();
+    entries.set(resource, entriesForResource);
+  }
 
+  const newResult = {
+    status: Resolved,
+    value: result,
+  };
+  const newEntry = lru.add(newResult, deleteEntry.bind(null, resource, key));
+  entriesForResource.set(key, newEntry);
+  return newResult;
+}
 function deleteEntry(resource: any, key: any) {
   const entriesForResource = entries.get(resource);
   if (entriesForResource !== undefined) {
@@ -73,6 +87,10 @@ export function createResource(fetch: any) {
   const hashInput = identityHashFn;
 
   const resource = {
+    write(input: any, result: any) {
+      const key = hashInput(input);
+      writeResult(resource, key, result);
+    },
     read(input: any) {
       // react-cache currently doesn't rely on context, but it may in the
       // future, so we read anyway to prevent access outside of render.

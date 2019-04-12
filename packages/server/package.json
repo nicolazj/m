@@ -14,7 +14,7 @@
     "typescript": "^3.4.1"
   },
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon &",
     "dev": "rm -rf dist && tsc && node dev.js"
   }
 }
