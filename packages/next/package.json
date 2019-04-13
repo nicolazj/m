@@ -1,0 +1,26 @@
+{
+  "name": "with-typescript-styled-components",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "fkill :8000 -s && next -p 8000 &",
+    "build": "next build"
+  },
+  "dependencies": {
+    "@rebass/grid": "^6.0.0",
+    "@types/next": "^8.0.1",
+    "@types/react": "^16.8.6",
+    "@types/rebass__grid": "^6.0.4",
+    "@types/styled-components": "^4.1.11",
+    "@zeit/next-typescript": "^1.1.1",
+    "axios": "^0.18.0",
+    "next": "^8.0.4",
+    "polished": "^3.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.1.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.0"
+  },
+  "license": "ISC"
+}

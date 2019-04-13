@@ -502,9 +502,7 @@ export default async () => {
   const { data } = await axios.get<Root>(url, {
     params: {
       format: 'json',
-
       outCharset: 'utf-8',
-
       data: {
         new_song: {
           module: 'newsong.NewSongServer',

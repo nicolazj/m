@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { Cred } from '@m/shared/dist/types';
 
-const instance = axios.create({
-  baseURL: '/api',
+const __DEV__ = process.env.NODE_ENV === 'development';
+export const instance = axios.create({
+  baseURL: __DEV__ ? 'http://localhost:4000/api' : '/api',
 });
 
 async function search(q: string) {
@@ -11,7 +11,7 @@ async function search(q: string) {
 }
 
 async function cred() {
-  const { data } = await instance.get<Cred>(`/vendor/qq/cred`);
+  const { data } = await instance.get(`/vendor/qq/cred`);
   return data;
 }
 async function albums(artistID: string) {

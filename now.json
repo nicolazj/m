@@ -4,11 +4,7 @@
   "regions": ["hnd1"],
   "builds": [
     { "src": "packages/server/src/api/**/*.ts", "use": "@now/node" },
-    {
-      "src": "packages/web/package.json",
-      "use": "@now/static-build",
-      "config": { "distDir": "build" }
-    }
+    { "src": "packages/next/next.config.js", "use": "@now/next" }
   ],
   "routes": [
     {
@@ -18,25 +14,11 @@
         "Access-Control-Allow-Origin": "*"
       }
     },
-
+    { "src": "/chart/(?<q>[^/]+)$", "dest": "/packages/next/chart?q=$q" },
+    { "src": "/artist/(?<q>[^/]+)$", "dest": "/packages/next/artist?q=$q" },
     {
-      "src": "/static/(.*)",
-      "headers": { "cache-control": "s-maxage=31536000,immutable" },
-      "dest": "/packages/web/static/$1"
-    },
-    { "src": "/favicon.ico", "dest": "/packages/web/favicon.ico" },
-    { "src": "/asset-manifest.json", "dest": "/packages/web/asset-manifest.json" },
-    { "src": "/manifest.json", "dest": "/packages/web/manifest.json" },
-    { "src": "/precache-manifest.(.*)", "dest": "/packages/web/precache-manifest.$1" },
-    {
-      "src": "/service-worker.js",
-      "headers": { "cache-control": "s-maxage=0" },
-      "dest": "/packages/web/service-worker.js"
-    },
-    {
-      "src": "/(.*)",
-      "headers": { "cache-control": "s-maxage=0" },
-      "dest": "/packages/web/index.html"
+      "src": "^(.*)$",
+      "dest": "/packages/next$1"
     }
   ]
 }

@@ -16,7 +16,7 @@ export interface Item {
   pic: string;
 }
 
-export default async (artistId: string, n = 5) => {
+export default async (artistId: string, n = 99) => {
   const url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_simsinger.fcg';
   const { data } = await axios.get<Root>(url, {
     params: {

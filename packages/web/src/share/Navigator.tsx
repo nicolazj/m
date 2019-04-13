@@ -11,6 +11,7 @@ import Home from './screens/Home';
 import Search from './screens/Search';
 import SearchAlbum from './screens/Search/Album';
 import SearchSong from './screens/Search/Song';
+import TopList from './screens/TopList';
 
 const AppNavigator = () => (
   <Router history={history}>
@@ -22,6 +23,7 @@ const AppNavigator = () => (
         <Route path="/album/:id" component={Album} />
         <Route path="/search/song/:q" component={SearchSong} />
         <Route path="/search/album/:q" component={SearchAlbum} />
+        <Route path="/toplist/:q" component={TopList} />
       </Suspense>
     </View>
     <Player />

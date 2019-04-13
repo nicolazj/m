@@ -26,6 +26,7 @@ const app = async (req, res) => {
   }
 
   try {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     await routes[key](req, res);
   } catch (err) {
     console.error(err);
