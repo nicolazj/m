@@ -1,18 +1,20 @@
 import { NextSFC } from 'next/index';
 import Link from 'next/link';
 import React from 'react';
+import styled from 'styled-components';
 
 import AlbumList from '../shared/components/AlbumList';
 import ArtistList from '../shared/components/ArtistList';
 import SongList from '../shared/components/SongList';
-import { ContentSpacing, H1, SubText, Text, Img } from '../shared/primitive';
+import { ContentSpacing, H1, Img, SubText, Text } from '../shared/primitive';
 import { artistR } from '../shared/resources';
 import { T_Album, T_Artist, T_Song } from '../shared/types';
-import styled from 'styled-components';
+
 interface Props {
   albums: T_Album[];
   songs: T_Song[];
   relatedArtists: T_Artist[];
+  artistId: string;
 }
 
 const Hero = styled.div({

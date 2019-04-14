@@ -37,7 +37,6 @@ const FancyBox = styled.div({
 });
 export default () => (
   <ContentSpacing>
-    <Nav />
     {charts.map(chart => (
       <section key={chart.name}>
         <H1>{chart.name}</H1>

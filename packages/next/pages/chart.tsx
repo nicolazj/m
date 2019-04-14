@@ -1,16 +1,13 @@
 import { NextSFC } from 'next/index';
 import React from 'react';
 
-import Songlist from '../shared/components/Songlist';
-import { ContentSpacing, SubText, Text } from '../shared/primitive';
+import SongList from '../shared/components/SongList';
+import { ContentSpacing } from '../shared/primitive';
 import { playlistR } from '../shared/resources';
+import { T_Song } from '../shared/types';
 
-interface Song {
-  id: string;
-  name: string;
-}
 interface Props {
-  playlist: Song[];
+  playlist: T_Song[];
 }
 
 const Chart: NextSFC<Props> = ({ playlist }) => (
@@ -18,7 +15,7 @@ const Chart: NextSFC<Props> = ({ playlist }) => (
     <div>
       <div />
       <div>
-        <Songlist songs={playlist} />
+        <SongList songs={playlist} />
       </div>
     </div>
   </ContentSpacing>
