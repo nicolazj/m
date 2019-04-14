@@ -13,3 +13,7 @@ export const artistR = createResource(async (artistId: string) => {
   ]);
   return { albums, songs, relatedArtists };
 });
+export const albumR = createResource(async (q: string) => {
+  const { data } = await instance.get(`/album/by_id?q=${q}`);
+  return data;
+});

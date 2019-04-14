@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SubText, Text } from '../primitive';
+import { SubText, Text, A } from '../primitive';
 import { T_Song } from '../types';
 import styled from 'styled-components';
 import { padding, rgba } from 'polished';
@@ -13,6 +13,7 @@ interface Props {
 
 const Song_ = styled.div({
   ...padding(10),
+  textAlign: 'left',
   ':hover': {
     backgroundColor: rgba(0, 0, 0, 0.3),
   },
@@ -35,13 +36,14 @@ const SongList: React.FC<Props> = ({ songs }) => {
               ),
               song.singers.map(singer => (
                 <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
-                  <SubText as="a">{singer.name}</SubText>
+                  <SubText as={A}>{singer.name}</SubText>
                 </Link>
               ))
             )}
-
             <SubText> • </SubText>
-            <SubText>「 {song.album.name} 」</SubText>
+            <Link href={`/album?q=${song.album.id}`} as={`/album/${song.album.id}`}>
+              <SubText as={A}>「 {song.album.name} 」</SubText>
+            </Link>
           </div>
         </Song_>
       ))}

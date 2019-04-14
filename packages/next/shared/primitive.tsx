@@ -15,6 +15,7 @@ export const Square = styled.div({
   width: '100%',
   paddingTop: '100%',
   position: 'relative',
+  height: 0,
 });
 
 const textStyle = {
@@ -31,12 +32,18 @@ export const SubText = styled.span({
   opacity: 0.6,
   '&:hover': {
     opacity: 1,
-    textDecoration: 'underline',
-    textUnderlinePosition: 'under',
   },
   fontSize: 14,
 });
-
+export const A = styled.a({
+  color: '#fff',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+    textUnderlinePosition: 'under',
+  },
+});
 export const H1 = styled.h1({
   ...textStyle,
   fontSize: 36,

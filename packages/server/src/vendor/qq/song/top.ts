@@ -191,7 +191,7 @@ export default async (id: string) => {
     name: song.name,
     id: song.mid,
     album: {
-      id: song.album.id,
+      id: song.album.mid,
       name: song.album.name,
     },
     singers: song.singer.map(singer => ({
