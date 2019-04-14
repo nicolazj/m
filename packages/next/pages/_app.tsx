@@ -49,7 +49,6 @@ class MyApp extends App {
 
     const { req } = ctx;
     if (req && !__DEV__) {
-      console.log(req.headers.host, 123);
       instance.defaults.baseURL = `https://${req.headers.host}/api`;
     }
     let pageProps = {};

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Flex, Box } from '@rebass/grid';
-import { H1, H2, ContentSpacing } from '../shared/primitive';
+import { H1, H2, ContentSpacing, Square } from '../shared/primitive';
 import Nav from '../shared/components/Nav';
 import styled from 'styled-components';
 import { linearGradient, padding } from 'polished';
@@ -23,12 +23,6 @@ const charts = [
   },
 ];
 
-const BoxAutoHeight = styled.div({
-  width: '100%',
-  paddingTop: '100%',
-  position: 'relative',
-  boxShadow: '0 0 10px rgba(0,0,0,.3)',
-});
 const FancyBox = styled.div({
   position: 'absolute',
   top: 0,
@@ -50,7 +44,7 @@ export default () => (
         <Flex justifyContent={'flex-start'} flexWrap={'wrap'}>
           {chart.list.map(c => (
             <Box key={c.id} width={[1 / 2, 1 / 2, 1 / 3, 1 / 4, 1 / 6]} p={2}>
-              <BoxAutoHeight>
+              <Square>
                 <Link href={`/chart?q=${c.id}`} as={`/chart/${c.id}`}>
                   <a>
                     <FancyBox>
@@ -58,7 +52,7 @@ export default () => (
                     </FancyBox>
                   </a>
                 </Link>
-              </BoxAutoHeight>
+              </Square>
             </Box>
           ))}
         </Flex>

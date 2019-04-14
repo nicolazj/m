@@ -1,8 +1,20 @@
 import styled from 'styled-components';
 import { padding, margin } from 'polished';
+import { Box, Flex } from '@rebass/grid';
+
+export const Grid = styled(Flex).attrs({ justifyContent: 'flex-start', flexWrap: 'wrap' })({});
+export const Cell = styled(Box).attrs({ p: 2 })({
+  textAlign: 'center',
+});
 
 export const ContentSpacing = styled.div({
   ...padding(0, 24, 0, 24),
+});
+
+export const Square = styled.div({
+  width: '100%',
+  paddingTop: '100%',
+  position: 'relative',
 });
 
 const textStyle = {
@@ -35,4 +47,9 @@ export const H2 = styled.h2({
   ...textStyle,
   fontSize: 24,
   ...margin(18, 0),
+});
+
+export const Img = styled.img({
+  objectFit: 'cover',
+  display: 'block',
 });

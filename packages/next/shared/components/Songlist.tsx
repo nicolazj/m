@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { padding, rgba } from 'polished';
 import Player from '../player';
 import Link from 'next/link';
+import { implode } from '../utils';
 interface Props {
   songs: T_Song[];
 }
@@ -19,8 +20,7 @@ const Song_ = styled.div({
 const play = (song: T_Song) => {
   Player!.AddAndPlay({ vendor: 'qq', id: song.id, name: song.name });
 };
-const Songlist: React.FC<Props> = ({ songs }) => {
-  const sp = <SubText>, </SubText>;
+const SongList: React.FC<Props> = ({ songs }) => {
   return (
     <div>
       {songs.map(song => (
@@ -29,11 +29,16 @@ const Songlist: React.FC<Props> = ({ songs }) => {
             <Text>{song.name}</Text>
           </div>
           <div>
-            {song.singers.map(singer => (
-              <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
-                <SubText as="a">{singer.name}</SubText>
-              </Link>
-            ))}
+            {implode(
+              i => (
+                <SubText key={i}>, </SubText>
+              ),
+              song.singers.map(singer => (
+                <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
+                  <SubText as="a">{singer.name}</SubText>
+                </Link>
+              ))
+            )}
 
             <SubText> • </SubText>
             <SubText>「 {song.album.name} 」</SubText>
@@ -44,4 +49,4 @@ const Songlist: React.FC<Props> = ({ songs }) => {
   );
 };
 
-export default Songlist;
+export default SongList;
