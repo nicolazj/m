@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Flex, Box } from '@rebass/grid';
 import { H1, H2, ContentSpacing, Square } from '../shared/primitive';
-import Nav from '../shared/components/Nav';
 import styled from 'styled-components';
 import { linearGradient, padding } from 'polished';
 
@@ -19,6 +18,31 @@ const charts = [
       { name: '欧美', id: 3 },
       { name: '韩国', id: 16 },
       { name: '日本', id: 17 },
+    ],
+  },
+  {
+    name: '特色榜',
+    list: [
+      { name: '抖音排行榜', id: 60 },
+      { name: '网络歌曲榜', id: 28 },
+      { name: '电音榜', id: 57 },
+      { name: '影视金曲榜', id: 29 },
+      { name: '腾讯音乐人原创榜', id: 52 },
+      { name: ' K歌金曲榜', id: 36 },
+      { name: '说唱榜', id: 58 },
+    ],
+  },
+  {
+    name: '全球榜',
+    list: [
+      { name: '美国公告牌榜', id: 108 },
+      { name: '美国iTunes榜', id: 123 },
+      { name: '韩国Mnet榜', id: 106 },
+      { name: '英国UK榜', id: 107 },
+      { name: '日本公信榜', id: 105 },
+      { name: ' 香港电台榜', id: 113 },
+      { name: '香港商台榜', id: 114 },
+      { name: '台湾Hito中文榜', id: 103 },
     ],
   },
 ];
@@ -42,7 +66,7 @@ export default () => (
         <H1>{chart.name}</H1>
         <Flex justifyContent={'flex-start'} flexWrap={'wrap'}>
           {chart.list.map(c => (
-            <Box key={c.id} width={[1 / 2, 1 / 2, 1 / 3, 1 / 4, 1 / 6]} p={2}>
+            <Box key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]} p={2}>
               <Square>
                 <Link href={`/chart?q=${c.id}`} as={`/chart/${c.id}`}>
                   <a>

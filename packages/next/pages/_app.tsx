@@ -2,10 +2,18 @@ import React from 'react';
 import App, { Container, NextAppContext } from 'next/app';
 import styled, { createGlobalStyle } from 'styled-components';
 import { normalize, backgroundImages } from 'polished';
-
+import Router from 'next/router';
 import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
 import { instance } from '../shared/agent';
+import NProgress from 'nprogress';
+
+Router.events.on('routeChangeStart', (url: string) => {
+  console.log(`Loading: ${url}`);
+  NProgress.start();
+});
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 const Normalize = createGlobalStyle`${normalize()}`;
 const GlobalStyle = createGlobalStyle({
