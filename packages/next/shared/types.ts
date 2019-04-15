@@ -14,6 +14,7 @@ export interface T_Song {
 export interface T_Album {
   id: string;
   name: string;
+  desc: string;
   singer: {
     id: string;
     name: string;

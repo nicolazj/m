@@ -1,72 +1,62 @@
 import axios from 'axios';
+import singer from '../search/singer';
 
 export interface Root {
-  detail: Detail;
+  songinfo: Songinfo;
   code: number;
   ts: number;
 }
 
-export interface Detail {
-  data: DetailData;
+export interface Songinfo {
+  data: Data;
   code: number;
 }
 
-export interface DetailData {
-  data: DataData;
-  songInfoList: SongInfoList[];
+export interface Data {
+  info: Info;
+  extras: Extras;
+  track_info: TrackInfo;
 }
 
-export interface DataData {
-  topId: number;
-  recType: number;
-  topType: number;
-  updateType: number;
+export interface Extras {
+  name: string;
+  transname: string;
+  subtitle: string;
+  from: string;
+}
+
+export interface Info {
+  genre: Genre;
+  intro: Genre;
+  lan: Genre;
+  pub_time: Genre;
+}
+
+export interface Genre {
   title: string;
-  titleDetail: string;
-  titleShare: string;
-  titleSub: string;
-  intro: string;
-  cornerMark: number;
-  period: string;
-  updateTime: Date;
-  history: History;
-  listenNum: number;
-  totalNum: number;
-  song: Song[];
-  headPicUrl: string;
-  frontPicUrl: string;
-  mbFrontPicUrl: string;
-  mbHeadPicUrl: string;
-  pcSubTopIds: any[];
-  pcSubTopTitles: any[];
-  subTopIds: any[];
-  adJumpUrl: string;
-  h5JumpUrl: string;
-  h5JumpKey: string;
-  h5JumpParam: string;
-  tjreport: string;
-  rt: number;
+  type: string;
+  content: Content[];
+  pos: number;
+  more: number;
+  selected: string;
+  use_platform: number;
 }
 
-export interface History {
-  year: number[];
-  subPeriod: Array<number[]>;
+export interface Content {
+  id: number;
+  value: string;
+  mid: string;
+  type: number;
+  show_type: number;
+  is_parent: number;
+  picurl: string;
+  read_cnt: number;
+  author: string;
+  jumpurl: string;
+  ori_picurl: string;
 }
 
-export interface Song {
-  rank: number;
-  rankType: number;
-  rankValue: string;
-  recType: number;
-  songId: number;
-  vid: string;
-  albumMid: string;
-  title: string;
-  singerName: string;
-  singerMid: string;
-}
-
-export interface SongInfoList {
+export interface TrackInfo {
   id: number;
   type: number;
   mid: string;
@@ -97,6 +87,7 @@ export interface SongInfoList {
   trace: string;
   data_type: number;
   modify_stamp: number;
+  pingpong: string;
 }
 
 export interface Album {
@@ -168,34 +159,32 @@ export interface Volume {
   lra: number;
 }
 
-export default async (id: string) => {
-  console.log('id', id);
+export default async (songId: string) => {
   const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg';
-
   const { data } = await axios.get<Root>(url, {
     params: {
       format: 'json',
       outCharset: 'utf-8',
       data: {
-        detail: {
-          module: 'musicToplist.ToplistInfoServer',
-          method: 'GetDetail',
-          param: { topId: +id, offset: 0, num: 20 },
+        songinfo: {
+          method: 'get_song_detail_yqq',
+          param: { song_type: 0, song_mid: songId },
+          module: 'music.pf_song_detail_svr',
         },
-        comm: { ct: 24, cv: 0 },
       },
     },
   });
-  return data.detail.data.songInfoList.map(song => ({
-    name: song.name,
-    id: song.mid,
+
+  return {
+    id: data.songinfo.data.track_info.mid,
+    name: data.songinfo.data.track_info.name,
     album: {
-      id: song.album.mid,
-      name: song.album.name,
+      id: data.songinfo.data.track_info.album.mid,
+      name: data.songinfo.data.track_info.album.name,
     },
-    singers: song.singer.map(singer => ({
+    singers: data.songinfo.data.track_info.singer.map(singer => ({
       id: singer.mid,
       name: singer.name,
     })),
-  }));
+  };
 };

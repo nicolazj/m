@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, margin } from 'polished';
+import { padding, margin, transitions } from 'polished';
 import { Box, Flex } from '@rebass/grid';
 
 export const Grid = styled(Flex).attrs({ justifyContent: 'flex-start', flexWrap: 'wrap' })({});
@@ -59,4 +59,18 @@ export const H2 = styled.h2({
 export const Img = styled.img({
   objectFit: 'cover',
   display: 'block',
+});
+
+export const Button = styled.button({
+  backgroundColor: '#1db954',
+  borderRadius: 20,
+  color: '#fff',
+  border: 'none',
+  outline: 'none',
+  ...padding(10, 30),
+  ...transitions('background 0.066s ease-in', 'transform 0.066s ease-in '),
+  ':hover': {
+    backgroundColor: '#1ed760',
+    transform: 'scale(1.1)',
+  },
 });

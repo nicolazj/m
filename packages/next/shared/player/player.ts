@@ -74,10 +74,9 @@ class Player {
   resetList() {
     this.state.list.length = 0;
   }
-  setListAndPlay(tracks: TrackInfo[], id: string) {
+  setListAndPlay(tracks: TrackInfo[]) {
     this.state.list = tracks;
-    const cur = tracks.findIndex(t => t.id === id);
-    this._play(cur);
+    this._play(0);
   }
   AddAndPlay(track: TrackInfo) {
     this.state.list.push(track);

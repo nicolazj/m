@@ -229,7 +229,7 @@ export interface Songlist {
   pay: SonglistPay;
   singer: SonglistSinger[];
   status: number;
-  subtitle: Subtitle;
+  subtitle: string;
   time_public: Date;
   title: string;
   trace: string;
@@ -243,17 +243,9 @@ export interface SonglistAlbum {
   id: number;
   mid: string;
   name: string;
-  subtitle: Subtitle;
+  subtitle: string;
   time_public: Date;
   title: string;
-}
-
-export enum Subtitle {
-  Empty = '',
-  创造营2019主题曲 = '《创造营2019》主题曲',
-  夜空中最闪亮的星电视剧插曲 = '《夜空中最闪亮的星》电视剧插曲',
-  最佳男友进化论电影推广曲 = '《最佳男友进化论》电影推广曲',
-  燕阳春电视剧插曲 = '《燕阳春》电视剧插曲',
 }
 
 export interface File {
@@ -388,25 +380,14 @@ export interface VHot {
   is_vip: boolean;
   jump_url: string;
   listen_num: number;
-  pic_mid: PicMid;
+  pic_mid: string;
   rcmdcontent: string;
-  rcmdtemplate: Rcmdtemplate;
   rcmdtype: number;
   singerid: number;
   title: string;
   tjreport: string;
   type: number;
   username: string;
-}
-
-export enum PicMid {
-  Empty = '',
-  The002JezgG1YPbm5 = '002jezgG1yPbm5',
-  The004Xsmhh1GedMZ = '004Xsmhh1gedMZ',
-}
-
-export enum Rcmdtemplate {
-  编辑推荐 = '编辑推荐',
 }
 
 export interface RootToplist {
@@ -433,7 +414,7 @@ export interface ToplistElement {
   title: string;
   titleDetail: string;
   titleShare: string;
-  titleSub: TitleSub;
+  titleSub: string;
   intro: string;
   cornerMark: number;
   period: string;
@@ -451,20 +432,8 @@ export interface ToplistElement {
   subTopIds: any[];
   adJumpUrl: string;
   h5JumpUrl: string;
-  h5JumpKey: H5JumpKey;
-  h5JumpParam: H5JumpParam;
   tjreport: string;
   rt: number;
-}
-
-export enum H5JumpKey {
-  Empty = '',
-  V5DetailMv = 'v5detail_mv',
-}
-
-export enum H5JumpParam {
-  Empty = '',
-  NavpageToplist = 'navpage=toplist',
 }
 
 export interface History {
@@ -478,23 +447,11 @@ export interface Song {
   rankValue: string;
   recType: number;
   songId: number;
-  vid: Vid;
+  vid: string;
   albumMid: string;
   title: string;
   singerName: string;
   singerMid: string;
-}
-
-export enum Vid {
-  Empty = '',
-  G0030F3Ethf = 'g0030f3ethf',
-  L0030X5I9Ek = 'l0030x5i9ek',
-  V0030H8Ma54 = 'v0030h8ma54',
-}
-
-export enum TitleSub {
-  Empty = '',
-  Hot100 = 'Hot100',
 }
 
 export default async () => {

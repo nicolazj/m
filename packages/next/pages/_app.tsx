@@ -40,6 +40,7 @@ const Main = styled.div({
 const Page = styled.div({
   flex: 1,
   paddingBottom: 100,
+  paddingLeft: 200,
 });
 const __DEV__ = process.env.NODE_ENV === 'development';
 

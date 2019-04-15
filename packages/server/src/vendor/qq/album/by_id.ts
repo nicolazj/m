@@ -120,6 +120,8 @@ export default async (albumId: string) => {
 
   return {
     desc: data.desc,
+    name: data.name,
+
     singer: {
       id: data.singermid,
       name: data.singername,
