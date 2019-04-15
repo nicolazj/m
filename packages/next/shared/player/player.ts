@@ -31,7 +31,8 @@ class QQMusic extends Vendor {
 }
 
 interface PlayerStatus {
-  progress: number;
+  duration: number;
+  currentTime: number;
   playing: boolean;
   list: TrackInfo[];
   cur: number;
@@ -48,7 +49,8 @@ class Player {
 
   public state: PlayerStatus = {
     playing: false,
-    progress: 0,
+    duration: 0,
+    currentTime: 0,
     list: [],
     cur: -1,
   };
@@ -64,8 +66,9 @@ class Player {
       this.state.playing = false;
       this.update();
     });
-    audio.onTimeUpdate((p: number) => {
-      this.state.progress = p;
+    audio.onTimeUpdate((duration, currentTime) => {
+      this.state.duration = duration;
+      this.state.currentTime = currentTime;
       this.update();
     });
     audio.onEnded(this.next.bind(this));

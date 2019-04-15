@@ -186,16 +186,20 @@ export default async (id: string) => {
       },
     },
   });
-  return data.detail.data.songInfoList.map(song => ({
-    name: song.name,
-    id: song.mid,
-    album: {
-      id: song.album.mid,
-      name: song.album.name,
-    },
-    singers: song.singer.map(singer => ({
-      id: singer.mid,
-      name: singer.name,
+  return {
+    name: data.detail.data.data.title,
+    pic: data.detail.data.data.headPicUrl,
+    songs: data.detail.data.songInfoList.map(song => ({
+      name: song.name,
+      id: song.mid,
+      album: {
+        id: song.album.mid,
+        name: song.album.name,
+      },
+      singers: song.singer.map(singer => ({
+        id: singer.mid,
+        name: singer.name,
+      })),
     })),
-  }));
+  };
 };

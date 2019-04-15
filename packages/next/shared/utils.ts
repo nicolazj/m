@@ -6,3 +6,8 @@ export const implode = (f: (idx: number) => any, arr: any[]) => {
   }
   return arr;
 };
+
+export function fmtMSS(n: number) {
+  let s = Math.floor(n) || 0;
+  return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s;
+}

@@ -24,9 +24,10 @@ class Audio {
   onPause(callback: () => void) {
     this._audio.addEventListener('pause', callback);
   }
-  onTimeUpdate(callack: (n: number) => void) {
-    this._audio.addEventListener('timeupdate', e => {
-      callack(this._audio.duration ? this._audio.currentTime / this._audio.duration : 0);
+  onTimeUpdate(callack: (duration: number, currentTime: number) => void) {
+    this._audio.addEventListener('timeupdate', () => {
+      const { duration, currentTime } = this._audio;
+      callack(duration, currentTime);
     });
   }
 }
