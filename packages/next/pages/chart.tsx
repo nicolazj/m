@@ -19,8 +19,7 @@ const play = (songs: T_Song[]) => {
   Player!.setListAndPlay(
     songs.map((song: any) => ({
       vendor: 'qq',
-      id: song.id,
-      name: song.name,
+      song,
     }))
   );
 };

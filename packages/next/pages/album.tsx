@@ -6,18 +6,7 @@ import styled from 'styled-components';
 
 import SongList from '../shared/components/SongList';
 import Player from '../shared/player';
-import {
-  A,
-  Button,
-  Cell,
-  ContentSpacing,
-  Grid,
-  H1,
-  Img,
-  Square,
-  SubText,
-  Text,
-} from '../shared/primitive';
+import { A, Button, Cell, ContentSpacing, Grid, H1, Img, Square, SubText, Text } from '../shared/primitive';
 import { albumR } from '../shared/resources';
 import { T_Album, T_Song } from '../shared/types';
 
@@ -35,8 +24,7 @@ const play = (songs: T_Song[]) => {
   Player!.setListAndPlay(
     songs.map((song: any) => ({
       vendor: 'qq',
-      id: song.id,
-      name: song.name,
+      song,
     }))
   );
 };

@@ -2,9 +2,12 @@ import styled from 'styled-components';
 import { padding, margin, transitions } from 'polished';
 import { Box, Flex } from '@rebass/grid';
 
-export const Grid = styled(Flex).attrs({ justifyContent: 'flex-start', flexWrap: 'wrap' })({});
+export const Grid = styled(Flex).attrs({ justifyContent: 'flex-start', flexWrap: 'wrap' })({
+  height: '100%',
+});
 export const Cell = styled(Box).attrs({ p: 2 })({
   textAlign: 'center',
+  height: '100%',
 });
 
 export const ContentSpacing = styled.div({

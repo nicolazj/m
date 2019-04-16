@@ -1,14 +1,12 @@
 import agent from '../agent';
 import Audio from './audio';
-
-interface TrackInfo {
-  id: string;
+import { T_Song } from '../types';
+interface T_Track {
   vendor: string;
-  name: string;
-  meta?: any;
+  song: T_Song;
 }
 abstract class Vendor {
-  abstract getURL(info: TrackInfo): string;
+  abstract getURL(info: T_Track): string;
 }
 
 class QQMusic extends Vendor {
@@ -23,8 +21,10 @@ class QQMusic extends Vendor {
     this.guid = guid;
     this.vkey = vkey;
   }
-  getURL(info: TrackInfo) {
-    return `http://dl.stream.qqmusic.qq.com/C400${info.id}.m4a?guid=${this.guid}&vkey=${this.vkey}&uin=0&fromtag=38`;
+  getURL(info: T_Track) {
+    return `http://dl.stream.qqmusic.qq.com/C400${info.song.id}.m4a?guid=${this.guid}&vkey=${
+      this.vkey
+    }&uin=0&fromtag=38`;
   }
 }
 
@@ -32,7 +32,7 @@ interface PlayerStatus {
   duration: number;
   currentTime: number;
   playing: boolean;
-  list: TrackInfo[];
+  list: T_Track[];
   cur: number;
 }
 interface PlayerListener {
@@ -75,11 +75,11 @@ class Player {
   resetList() {
     this.state.list.length = 0;
   }
-  setListAndPlay(tracks: TrackInfo[]) {
+  setListAndPlay(tracks: T_Track[]) {
     this.state.list = tracks;
     this._play(0);
   }
-  AddAndPlay(track: TrackInfo) {
+  AddAndPlay(track: T_Track) {
     this.state.list.push(track);
     this._play(this.state.list.length - 1);
   }

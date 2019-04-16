@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import player from '../../player';
-import { Cell, Grid, Text } from '../../primitive';
+import { Cell, Grid, Text, Img } from '../../primitive';
 import { fmtMSS } from '../../utils';
 import ProgressBar from './ProgressBar';
+import SongInfo from './SongInfo';
 import Icon from '../Icon';
 const Player_ = styled.div({
   height: 100,
@@ -64,14 +65,13 @@ const Player = () => {
   }, []);
 
   const { duration, currentTime, playing, list, cur } = playerState;
+  const track = cur > -1 && list[cur];
 
   return (
     <Player_>
       <Grid>
         <Cell width={[1 / 3]}>
-          <div>
-            <Text>{cur > -1 && list[cur].name}</Text>
-          </div>
+          <SongInfo track={track} />
         </Cell>
         <Cell width={[1 / 3]}>
           <div>

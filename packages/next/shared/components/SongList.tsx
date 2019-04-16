@@ -19,7 +19,7 @@ const Song_ = styled.div({
   },
 });
 const play = (song: T_Song) => {
-  Player!.AddAndPlay({ vendor: 'qq', id: song.id, name: song.name });
+  Player!.AddAndPlay({ vendor: 'qq', song });
 };
 const SongList: React.FC<Props> = ({ songs }) => {
   return (
