@@ -24,9 +24,7 @@ class QQMusic extends Vendor {
     this.vkey = vkey;
   }
   getURL(info: TrackInfo) {
-    return `http://dl.stream.qqmusic.qq.com/C400${info.id}.m4a?guid=${this.guid}&vkey=${
-      this.vkey
-    }&uin=0&fromtag=38`;
+    return `http://dl.stream.qqmusic.qq.com/C400${info.id}.m4a?guid=${this.guid}&vkey=${this.vkey}&uin=0&fromtag=38`;
   }
 }
 
@@ -71,7 +69,7 @@ class Player {
       this.state.currentTime = currentTime;
       this.update();
     });
-    audio.onEnded(this.next.bind(this));
+    audio.onEnded(this.skipForward.bind(this));
     this._audio = audio;
   }
   resetList() {
@@ -85,8 +83,11 @@ class Player {
     this.state.list.push(track);
     this._play(this.state.list.length - 1);
   }
-  next() {
+  skipForward() {
     this._play((this.state.cur + 1) % this.state.list.length);
+  }
+  skipBack() {
+    this._play((this.state.cur + this.state.list.length - 1) % this.state.list.length);
   }
   pause() {
     this._audio.pause();

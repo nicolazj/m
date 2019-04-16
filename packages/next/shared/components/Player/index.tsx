@@ -6,7 +6,7 @@ import player from '../../player';
 import { Cell, Grid, Text } from '../../primitive';
 import { fmtMSS } from '../../utils';
 import ProgressBar from './ProgressBar';
-
+import Icon from '../Icon';
 const Player_ = styled.div({
   height: 100,
   position: 'fixed',
@@ -14,6 +14,19 @@ const Player_ = styled.div({
   width: '100%',
   backgroundColor: '#282828',
   ...border('top', '1px', 'solid', '#000'),
+});
+
+const Button_ = styled.button({
+  border: 'none',
+  outline: 'none',
+  background: 'none',
+  width: 30,
+  height: 30,
+  color: '#b3b3b3',
+  opacity: 0.8,
+  ':hover': {
+    opacity: 1,
+  },
 });
 
 const TimeInfo_ = styled.div({
@@ -38,7 +51,7 @@ const Player = () => {
       : {
           duration: 0,
           currentTime: 0,
-          playgin: false,
+          playing: false,
           list: [],
           cur: -1,
         }
@@ -50,19 +63,21 @@ const Player = () => {
     });
   }, []);
 
-  const { duration, currentTime, playing } = playerState;
+  const { duration, currentTime, playing, list, cur } = playerState;
 
   return (
     <Player_>
       <Grid>
         <Cell width={[1 / 3]}>
-          <div />
+          <div>
+            <Text>{cur > -1 && list[cur].name}</Text>
+          </div>
         </Cell>
         <Cell width={[1 / 3]}>
           <div>
-            <button> {'<'} </button>
-            <button onClick={() => player!.pause()}> {playing ? '||' : '|>'} </button>
-            <button> {'>'} </button>
+            <Icon icon="prev" as={Button_} onClick={() => player!.skipBack()} />
+            <Icon icon={playing ? 'pause' : 'play'} as={Button_} onClick={() => player!.pause()} />
+            <Icon icon="next" as={Button_} onClick={() => player!.skipForward()} />
           </div>
           <TimeInfo_>
             <Time_>{fmtMSS(currentTime)}</Time_>

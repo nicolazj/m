@@ -48,7 +48,8 @@ export default class MyDocument extends Document {
         `,
             }}
           />
-          <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+          <link rel="stylesheet" type="text/css" href="/static/css/font.css" />
+          <link rel="stylesheet" type="text/css" href="/static/css/nprogress.css" />
         </Head>
         <body>
           <Main />

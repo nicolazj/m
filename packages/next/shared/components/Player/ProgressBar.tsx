@@ -7,16 +7,15 @@ const Progress_ = styled.div({
   borderRadius: 2,
   backgroundColor: '#404040',
 });
-const ProgressBar_ = styled.div<{ progress: number }>(props => ({
+const ProgressBar_ = styled.div({
   backgroundColor: '#b3b3b3',
   height: '100%',
   borderRadius: 2,
   ...transitions('transform 0.1s linear'),
-  width: `${props.progress * 100}%`,
-}));
+});
 const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
   <Progress_>
-    <ProgressBar_ progress={progress} />
+    <ProgressBar_ progress={progress} style={{ width: `${progress * 100}%` }} />
   </Progress_>
 );
 
