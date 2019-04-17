@@ -1,10 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Flex, Box } from '@rebass/grid';
-import { H1, H2, ContentSpacing, Square } from '../shared/primitive';
+import { H1, H2, ContentSpacing, Square, Grid, Cell, A } from '../shared/primitive';
 import styled from 'styled-components';
 import { linearGradient, padding } from 'polished';
-
+import Nav from '../shared/components/Nav';
 const charts = [
   {
     name: '推荐榜单',
@@ -61,24 +60,25 @@ const FancyBox = styled.div({
 });
 export default () => (
   <ContentSpacing>
+    <Nav />
     {charts.map(chart => (
       <section key={chart.name}>
         <H1>{chart.name}</H1>
-        <Flex justifyContent={'flex-start'} flexWrap={'wrap'}>
+        <Grid>
           {chart.list.map(c => (
-            <Box key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]} p={2}>
+            <Cell key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]} p={2}>
               <Square>
                 <Link href={`/chart?q=${c.id}`} as={`/chart/${c.id}`}>
-                  <a>
+                  <A>
                     <FancyBox>
                       <H2> {c.name}</H2>
                     </FancyBox>
-                  </a>
+                  </A>
                 </Link>
               </Square>
-            </Box>
+            </Cell>
           ))}
-        </Flex>
+        </Grid>
       </section>
     ))}
   </ContentSpacing>

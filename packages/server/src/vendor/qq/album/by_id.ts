@@ -1,6 +1,5 @@
 import { RootObject } from './by_id';
 import axios from 'axios';
-import singer from '../search/singer';
 
 export interface CompanyNew {
   brief: string;

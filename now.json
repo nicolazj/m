@@ -17,6 +17,7 @@
     { "src": "/chart/(?<q>[^/]+)$", "dest": "/packages/next/chart?q=$q" },
     { "src": "/artist/(?<q>[^/]+)$", "dest": "/packages/next/artist?q=$q" },
     { "src": "/album/(?<q>[^/]+)$", "dest": "/packages/next/album?q=$q" },
+    { "src": "/playlist/(?<q>[^/]+)$", "dest": "/packages/next/playlist?q=$q" },
     {
       "src": "^(.*)$",
       "dest": "/packages/next$1"

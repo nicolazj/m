@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import SongList from '../shared/components/SongList';
 import Player from '../shared/player';
 import { Button, Cell, ContentSpacing, Grid, H1, Img, Square } from '../shared/primitive';
-import { rankR } from '../shared/resources';
+import { playlistR } from '../shared/resources';
 import { T_Song } from '../shared/types';
 
 const Img_ = styled(Img)({
@@ -26,11 +26,12 @@ const play = (songs: T_Song[]) => {
 };
 interface Props {
   songs: T_Song[];
+  desc: string;
+  id: string;
   name: string;
   pic: string;
-  desc: string;
 }
-const Chart: NextSFC<Props> = ({ songs, name, pic, desc }) => (
+const Playlist: NextSFC<Props> = ({ songs, name, pic, desc }) => (
   <ContentSpacing>
     <NextSeo
       config={{
@@ -55,10 +56,10 @@ const Chart: NextSFC<Props> = ({ songs, name, pic, desc }) => (
   </ContentSpacing>
 );
 
-Chart.getInitialProps = async ({ query: { q } }) => {
-  let res = await rankR.read(q);
+Playlist.getInitialProps = async ({ query: { q } }) => {
+  let res = await playlistR.read(q);
 
   return res;
 };
 
-export default Chart;
+export default Playlist;
