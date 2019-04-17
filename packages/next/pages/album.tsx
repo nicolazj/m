@@ -1,3 +1,4 @@
+import NextSeo from 'next-seo';
 import { NextSFC } from 'next/index';
 import Link from 'next/link';
 import { margin } from 'polished';
@@ -30,6 +31,12 @@ const play = (songs: T_Song[]) => {
 };
 const Album: NextSFC<Props> = ({ album, albumId }) => (
   <ContentSpacing>
+    <NextSeo
+      config={{
+        title: `${album.name} - ${album.singer.name}`,
+        description: album.desc,
+      }}
+    />
     <Grid>
       <Cell width={[1, 1, 1, 1 / 3]}>
         <Square>

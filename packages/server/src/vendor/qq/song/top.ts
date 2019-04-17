@@ -188,6 +188,7 @@ export default async (id: string) => {
   });
   return {
     name: data.detail.data.data.title,
+    desc: data.detail.data.data.intro,
     pic: data.detail.data.data.headPicUrl,
     songs: data.detail.data.songInfoList.map(song => ({
       name: song.name,

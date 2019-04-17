@@ -1,13 +1,14 @@
+import NextSeo from 'next-seo';
 import { NextSFC } from 'next/index';
 import { margin } from 'polished';
 import React from 'react';
+import styled from 'styled-components';
 
 import SongList from '../shared/components/SongList';
 import Player from '../shared/player';
 import { Button, Cell, ContentSpacing, Grid, H1, Img, Square } from '../shared/primitive';
 import { playlistR } from '../shared/resources';
 import { T_Song } from '../shared/types';
-import styled from 'styled-components';
 
 const Img_ = styled(Img)({
   width: '100%',
@@ -27,9 +28,16 @@ interface Props {
   songs: T_Song[];
   name: string;
   pic: string;
+  desc: string;
 }
-const Chart: NextSFC<Props> = ({ songs, name, pic }) => (
+const Chart: NextSFC<Props> = ({ songs, name, pic, desc }) => (
   <ContentSpacing>
+    <NextSeo
+      config={{
+        title: `${name}`,
+        description: desc,
+      }}
+    />
     <Grid>
       <Cell width={[1, 1, 1, 1 / 3]}>
         <Square>
