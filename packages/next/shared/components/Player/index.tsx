@@ -6,7 +6,7 @@ import player from '../../player';
 import { Cell, Grid, Text, Img } from '../../primitive';
 import { fmtMSS } from '../../utils';
 import ProgressBar from './ProgressBar';
-import SongInfo from './SongInfo';
+import TrackInfo from './TrackInfo';
 import Icon from '../Icon';
 const Player_ = styled.div({
   height: 100,
@@ -71,7 +71,7 @@ const Player = () => {
     <Player_>
       <Grid>
         <Cell width={[1 / 3]}>
-          <SongInfo track={track} />
+          <TrackInfo track={track} />
         </Cell>
         <Cell width={[1 / 3]}>
           <div>

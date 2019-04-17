@@ -17,7 +17,7 @@ const Img_ = styled(Img)({
 
 const play = (songs: T_Song[]) => {
   Player!.setListAndPlay(
-    songs.map((song: any) => ({
+    songs.map(song => ({
       vendor: 'qq',
       song,
     }))

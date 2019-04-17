@@ -32,7 +32,7 @@ const SongInfo_ = styled.div({
   ...padding(10),
 });
 
-const SongInfo: React.FC<{ track: T_Track }> = ({ track }) => {
+const TrackInfo: React.FC<{ track: T_Track }> = ({ track }) => {
   return (
     track && (
       <TrackInfo_>
@@ -54,10 +54,8 @@ const SongInfo: React.FC<{ track: T_Track }> = ({ track }) => {
                 <SubText key={i}>, </SubText>
               ),
               track.song.singers.map(singer => (
-                <Link href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
-                  <SubText as={A} key={singer.id}>
-                    {singer.name}
-                  </SubText>
+                <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
+                  <SubText as={A}>{singer.name}</SubText>
                 </Link>
               ))
             )}
@@ -68,4 +66,4 @@ const SongInfo: React.FC<{ track: T_Track }> = ({ track }) => {
   );
 };
 
-export default SongInfo;
+export default TrackInfo;
