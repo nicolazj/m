@@ -4,7 +4,9 @@ import artist from './artist';
 import song from './song';
 import cred from './cred';
 import axios from 'axios';
+import console = require('console');
 
+console.log('123');
 // Add a response interceptor
 axios.interceptors.response.use(
   function(response) {

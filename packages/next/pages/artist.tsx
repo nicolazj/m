@@ -1,3 +1,4 @@
+import NextSeo from 'next-seo';
 import { NextSFC } from 'next/index';
 import Link from 'next/link';
 import React from 'react';
@@ -15,6 +16,10 @@ interface Props {
   songs: T_Song[];
   relatedArtists: T_Artist[];
   artistId: string;
+  info: {
+    name: string;
+    intro: string;
+  };
 }
 
 const Hero = styled.div({
@@ -27,8 +32,14 @@ const Img_ = styled(Img)({
   width: 400,
   height: 400,
 });
-const Artist: NextSFC<Props> = ({ albums, songs, relatedArtists, artistId }) => (
+const Artist: NextSFC<Props> = ({ albums, songs, relatedArtists, artistId, info }) => (
   <ContentSpacing>
+    <NextSeo
+      config={{
+        title: `${info.name}`,
+        description: info.intro,
+      }}
+    />
     <Hero>
       <Img_ src={`//y.gtimg.cn/music/photo_new/T001R800x800M000${artistId}.jpg`} />
     </Hero>
