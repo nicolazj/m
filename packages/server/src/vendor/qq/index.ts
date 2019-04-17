@@ -1,12 +1,11 @@
 import search from './search';
 import album from './album';
 import artist from './artist';
+import playlist from './playlist';
 import song from './song';
 import cred from './cred';
 import axios from 'axios';
-import console = require('console');
 
-console.log('123');
 // Add a response interceptor
 axios.interceptors.response.use(
   function(response) {
@@ -28,6 +27,7 @@ const QQ = {
   artist,
   song,
   cred,
+  playlist,
 };
 
 function logify<T>(o: T, f = ''): T {
