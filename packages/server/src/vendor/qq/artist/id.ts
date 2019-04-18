@@ -1,6 +1,5 @@
 import axios from 'axios';
 export default async (artistId: string) => {
-  console.log('artistId', artistId);
   const url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_singer_desc.fcg';
   const { data } = await axios.get(url, {
     params: {
@@ -14,8 +13,6 @@ export default async (artistId: string) => {
       Referer: 'https://c.y.qq.com/xhr_proxy_utf8.html',
     },
   });
-
-  console.log(data);
 
   const r = /<id>(.*)<\/id>/.exec(data);
 

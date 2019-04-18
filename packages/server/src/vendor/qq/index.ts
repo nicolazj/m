@@ -6,10 +6,8 @@ import song from './song';
 import cred from './cred';
 import axios from 'axios';
 
-// Add a response interceptor
 axios.interceptors.response.use(
   function(response) {
-    // Do something with response data
     return response;
   },
   function(error) {

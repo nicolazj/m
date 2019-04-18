@@ -1,20 +1,19 @@
 import NextSeo from 'next-seo';
 import { NextSFC } from 'next/index';
-import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
 import AlbumList from '../shared/components/AlbumList';
 import ArtistList from '../shared/components/ArtistList';
 import SongList from '../shared/components/SongList';
-import { ContentSpacing, H1, Img, SubText, Text } from '../shared/primitive';
+import { ContentSpacing, H1, Img } from '../shared/primitive';
 import { artistR } from '../shared/resources';
-import { T_Album, T_Artist, T_Song } from '../shared/types';
+import { T_Album, T_Singer, T_Song } from '../shared/types';
 
 interface Props {
   albums: T_Album[];
   songs: T_Song[];
-  relatedArtists: T_Artist[];
+  relatedArtists: T_Singer[];
   artistId: string;
   info: {
     name: string;

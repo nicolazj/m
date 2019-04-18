@@ -2,7 +2,6 @@ import express from 'express';
 import helmet from 'helmet';
 import { parse } from 'url';
 import qq from '../../vendor/qq';
-import console = require('console');
 
 const app = express();
 

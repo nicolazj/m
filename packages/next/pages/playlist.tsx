@@ -41,13 +41,19 @@ const Playlist: NextSFC<Props> = ({ songs, name, pic, desc }) => (
     />
     <Grid>
       <Cell width={[1, 1, 1, 1 / 3]}>
-        <Square>
-          <Img_ src={pic} />
-        </Square>
-        <H1>{name}</H1>
-        <div css={{ ...margin(20) }}>
-          <Button onClick={() => play(songs)}>播放</Button>
-        </div>
+        <Grid>
+          <Cell width={[1 / 2, 1 / 2, 1 / 2, 1]}>
+            <Square>
+              <Img_ src={pic} />
+            </Square>
+          </Cell>
+          <Cell width={[1 / 2, 1 / 2, 1 / 2, 1]}>
+            <H1>{name}</H1>
+            <div css={{ ...margin(20) }}>
+              <Button onClick={() => play(songs)}>播放</Button>
+            </div>
+          </Cell>
+        </Grid>
       </Cell>
       <Cell width={[1, 1, 1, 2 / 3]}>
         <SongList songs={songs} />

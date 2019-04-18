@@ -9,7 +9,6 @@ import { instance } from '../shared/agent';
 import NProgress from 'nprogress';
 
 Router.events.on('routeChangeStart', (url: string) => {
-  console.log(`Loading: ${url}`);
   NProgress.start();
 });
 Router.events.on('routeChangeComplete', (url: string) => {
