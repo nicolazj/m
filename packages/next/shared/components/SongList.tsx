@@ -19,7 +19,7 @@ const Song_ = styled.div({
   },
 });
 const play = (song: T_Song) => {
-  Player!.AddAndPlay({ vendor: 'qq', song });
+  Player!.play({ vendor: 'qq', song });
 };
 const SongList: React.FC<Props> = ({ songs }) => {
   return (
@@ -35,13 +35,20 @@ const SongList: React.FC<Props> = ({ songs }) => {
                 <SubText key={i}>, </SubText>
               ),
               song.singers.map(singer => (
-                <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
+                <Link
+                  key={singer.id}
+                  href={`/artist?q=${singer.id}`}
+                  as={`/artist/${singer.id}`}
+                >
                   <SubText as={A}>{singer.name}</SubText>
                 </Link>
               ))
             )}
             <SubText> • </SubText>
-            <Link href={`/album?q=${song.album.id}`} as={`/album/${song.album.id}`}>
+            <Link
+              href={`/album?q=${song.album.id}`}
+              as={`/album/${song.album.id}`}
+            >
               <SubText as={A}>「 {song.album.name} 」</SubText>
             </Link>
           </div>

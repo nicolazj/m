@@ -26,3 +26,9 @@ export interface T_Singer {
   id: string;
   name: string;
 }
+
+export interface T_Playlist {
+  id: string;
+  name: string;
+  pic: string;
+}

@@ -22,9 +22,9 @@ class QQMusic extends Vendor {
     this.vkey = vkey;
   }
   getURL(info: T_Track) {
-    return `http://dl.stream.qqmusic.qq.com/C400${info.song.id}.m4a?guid=${this.guid}&vkey=${
-      this.vkey
-    }&uin=0&fromtag=38`;
+    return `http://dl.stream.qqmusic.qq.com/C400${info.song.id}.m4a?guid=${
+      this.guid
+    }&vkey=${this.vkey}&uin=0&fromtag=38`;
   }
 }
 
@@ -72,26 +72,7 @@ class Player {
     audio.onEnded(this.skipForward.bind(this));
     this._audio = audio;
   }
-  resetList() {
-    this.state.list.length = 0;
-  }
-  setListAndPlay(tracks: T_Track[]) {
-    this.state.list = tracks;
-    this._play(0);
-  }
-  AddAndPlay(track: T_Track) {
-    this.state.list.push(track);
-    this._play(this.state.list.length - 1);
-  }
-  skipForward() {
-    this._play((this.state.cur + 1) % this.state.list.length);
-  }
-  skipBack() {
-    this._play((this.state.cur + this.state.list.length - 1) % this.state.list.length);
-  }
-  pause() {
-    this._audio.pause();
-  }
+
   _play(cur: number) {
     const track = this.state.list[cur];
     const vendor = track.vendor;
@@ -99,6 +80,27 @@ class Player {
     this._audio.play(url);
     this.state.cur = cur;
   }
+
+  playList(tracks: T_Track[]) {
+    this.state.list = tracks;
+    this._play(0);
+  }
+  play(track: T_Track) {
+    this.state.list.push(track);
+    this._play(this.state.list.length - 1);
+  }
+  skipForward() {
+    this._play((this.state.cur + 1) % this.state.list.length);
+  }
+  skipBack() {
+    this._play(
+      (this.state.cur + this.state.list.length - 1) % this.state.list.length
+    );
+  }
+  pause() {
+    this._audio.pause();
+  }
+
   subscribe(listener: PlayerListener) {
     this.listeners.push(listener);
 

@@ -3,15 +3,17 @@ import styled from 'styled-components';
 
 import agent from '../shared/agent';
 import { H1, ContentSpacing } from '../shared/primitive';
-import { T_Album, T_Singer, T_Song } from '../shared/types';
+import { T_Album, T_Singer, T_Song, T_Playlist } from '../shared/types';
 import ArtistList from '../shared/components/ArtistList';
 import SongList from '../shared/components/SongList';
 import AlbumList from '../shared/components/AlbumList';
+import PlayListList from '../shared/components/PlayListList';
 
 interface SearchResult {
   songs: T_Song[];
   albums: T_Album[];
   singers: T_Singer[];
+  playlists: T_Playlist[];
 }
 const SearchInput_ = styled.input({
   backgroundColor: '#282828',
@@ -31,6 +33,7 @@ const Search = () => {
     songs: [],
     albums: [],
     singers: [],
+    playlists: [],
   });
 
   useEffect(() => {
@@ -47,7 +50,7 @@ const Search = () => {
     };
   }, [q]);
 
-  const { songs, albums, singers } = quickResult;
+  const { songs, albums, singers, playlists } = quickResult;
   return (
     <div>
       <SearchInput_
@@ -64,6 +67,8 @@ const Search = () => {
         <AlbumList albums={albums} />
         <H1>艺术家</H1>
         <ArtistList artists={singers} />
+        <H1>歌单</H1>
+        <PlayListList playlists={playlists} />
       </ContentSpacing>
     </div>
   );

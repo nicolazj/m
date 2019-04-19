@@ -76,8 +76,16 @@ const Player = () => {
         <Cell width={[1 / 3]}>
           <div>
             <Icon icon="prev" as={Button_} onClick={() => player!.skipBack()} />
-            <Icon icon={playing ? 'pause' : 'play'} as={Button_} onClick={() => player!.pause()} />
-            <Icon icon="next" as={Button_} onClick={() => player!.skipForward()} />
+            <Icon
+              icon={playing ? 'pause' : 'play'}
+              as={Button_}
+              onClick={() => player!.pause()}
+            />
+            <Icon
+              icon="next"
+              as={Button_}
+              onClick={() => player!.skipForward()}
+            />
           </div>
           <TimeInfo_>
             <Time_>{fmtMSS(currentTime)}</Time_>

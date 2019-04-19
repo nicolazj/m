@@ -4,6 +4,7 @@ import artist from './artist';
 import playlist from './playlist';
 import song from './song';
 import cred from './cred';
+import lyric from './lyric';
 import axios from 'axios';
 
 axios.interceptors.response.use(
@@ -24,6 +25,7 @@ const QQ = {
   album,
   artist,
   song,
+  lyric,
   cred,
   playlist,
 };

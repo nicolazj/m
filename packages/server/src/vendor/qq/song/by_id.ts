@@ -178,6 +178,7 @@ export default async (songId: string) => {
   return {
     id: data.songinfo.data.track_info.mid,
     name: data.songinfo.data.track_info.name,
+    id2: data.songinfo.data.track_info.id,
     album: {
       id: data.songinfo.data.track_info.album.mid,
       name: data.songinfo.data.track_info.album.name,

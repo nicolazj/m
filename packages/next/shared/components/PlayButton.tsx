@@ -14,7 +14,7 @@ const Wrapper_ = styled.div({
 });
 const PlayButton: React.FC<Props> = ({ songs }) => {
   const play = (songs: T_Song[]) => {
-    Player!.setListAndPlay(
+    Player!.playList(
       songs.map(song => ({
         vendor: 'qq',
         song,

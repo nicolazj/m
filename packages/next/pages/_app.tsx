@@ -1,12 +1,13 @@
-import React from 'react';
 import App, { Container, NextAppContext } from 'next/app';
-import styled, { createGlobalStyle } from 'styled-components';
-import { normalize, backgroundImages } from 'polished';
 import Router from 'next/router';
+import NProgress from 'nprogress';
+import { backgroundImages, normalize } from 'polished';
+import React from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+
+import { instance } from '../shared/agent';
 import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
-import { instance } from '../shared/agent';
-import NProgress from 'nprogress';
 
 Router.events.on('routeChangeStart', (url: string) => {
   NProgress.start();
@@ -57,11 +58,11 @@ const __DEV__ = process.env.NODE_ENV === 'development';
 class MyApp extends App {
   static async getInitialProps(c: NextAppContext) {
     const { Component, ctx } = c;
-
     const { req } = ctx;
     if (req && !__DEV__) {
       instance.defaults.baseURL = `https://${req.headers.host}/api`;
     }
+
     let pageProps = {};
 
     if (Component.getInitialProps) {
