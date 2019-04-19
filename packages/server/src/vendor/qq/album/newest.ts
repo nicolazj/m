@@ -496,7 +496,5 @@ export default async () => {
       })),
     }));
   });
-  return {
-    album: flatten(r),
-  };
+  return flatten(r);
 };

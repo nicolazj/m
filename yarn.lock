@@ -812,6 +812,13 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
 
+"@types/next-seo@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@types/next-seo/-/next-seo-1.10.0.tgz#ac26f243e9b563f3d6776605458b9fa67ed2eb6b"
+  integrity sha512-G/Q2EDAyXwo/+c6EbUxmKBawLTFL1g3Y96lZRlKujhy+rX7uWPQFNRmwCOxhK7jitzqlteLEU5Nd3xbW13kVPQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/next-server@*":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@types/next-server/-/next-server-8.0.0.tgz#255ed9b0cf5a518b0137dd6a72a4f9aeddbbeb7d"

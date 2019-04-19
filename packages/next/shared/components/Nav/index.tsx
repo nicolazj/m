@@ -13,9 +13,9 @@ const UL_ = styled.ul({
 });
 const LI_ = styled.li<{ current?: boolean }>(({ current }) => ({
   ...margin(10),
-  ...padding(5),
-  borderBottomWidth: current ? 2 : 0,
-  borderBottomColor: '#1db954',
+  ...padding(10),
+  borderBottomWidth: 2,
+  borderBottomColor: current ? '#1db954' : 'transparent',
   borderBottomStyle: 'solid',
 }));
 
@@ -33,13 +33,20 @@ const routes = [
     route: '/playlists',
     text: '歌单',
   },
+  {
+    route: '/new',
+    text: '新专辑',
+  },
 ];
 const Nav: React.FC<WithRouterProps> = ({ router }) => {
   return (
     <nav>
       <UL_>
         {routes.map(route => (
-          <LI_ key={route.route} current={router && router.route === route.route}>
+          <LI_
+            key={route.route}
+            current={router && router.route === route.route}
+          >
             <Link href={route.route} prefetch>
               <Text as={A_}>{route.text}</Text>
             </Link>

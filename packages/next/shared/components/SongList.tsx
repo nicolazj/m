@@ -25,7 +25,7 @@ const SongList: React.FC<Props> = ({ songs }) => {
   return (
     <div>
       {songs.map(song => (
-        <Song_ key={song.id} onClick={() => play(song)}>
+        <Song_ key={song.id} onDoubleClick={() => play(song)}>
           <div>
             <Text>{song.name}</Text>
           </div>
