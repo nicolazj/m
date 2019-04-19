@@ -1,11 +1,9 @@
-import { NextSFC } from 'next/index';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import agent from '../shared/agent';
 import { H1, ContentSpacing } from '../shared/primitive';
-import { T_Album, T_Artist, T_Song } from '../shared/types';
+import { T_Album, T_Singer, T_Song } from '../shared/types';
 import ArtistList from '../shared/components/ArtistList';
 import SongList from '../shared/components/SongList';
 import AlbumList from '../shared/components/AlbumList';
@@ -13,7 +11,7 @@ import AlbumList from '../shared/components/AlbumList';
 interface SearchResult {
   songs: T_Song[];
   albums: T_Album[];
-  singers: T_Artist[];
+  singers: T_Singer[];
 }
 const SearchInput_ = styled.input({
   backgroundColor: '#282828',
@@ -24,6 +22,7 @@ const SearchInput_ = styled.input({
   padding: 24,
   caretColor: '#1db954',
   color: '#fff',
+  height: 100,
 });
 
 const Search = () => {
@@ -33,15 +32,8 @@ const Search = () => {
     albums: [],
     singers: [],
   });
-  // useEffect(() => {
-  //   const { q } = qs.parse(props.location.search);
-  //   if (q) {
-  //     setQ(q.toString());
-  //   }
-  // }, []);
-  useEffect(() => {
-    // history.replace(`/search?q=${q}`);
 
+  useEffect(() => {
     let canceled = false;
     const search = async (q: string) => {
       const data = await agent.search(q);
@@ -66,12 +58,12 @@ const Search = () => {
       />
 
       <ContentSpacing>
-        <H1>艺术家</H1>
-        <ArtistList artists={singers} />
         <H1>歌曲</H1>
         <SongList songs={songs} />
         <H1>专辑</H1>
         <AlbumList albums={albums} />
+        <H1>艺术家</H1>
+        <ArtistList artists={singers} />
       </ContentSpacing>
     </div>
   );
