@@ -7,7 +7,9 @@ import { Cell, Grid, Text, Img } from '../../primitive';
 import { fmtMSS } from '../../utils';
 import ProgressBar from './ProgressBar';
 import TrackInfo from './TrackInfo';
+import Lyric from './Lyric';
 import Icon from '../Icon';
+
 const Player_ = styled.div({
   height: 100,
   position: 'fixed',
@@ -65,7 +67,7 @@ const Player = () => {
   }, []);
 
   const { duration, currentTime, playing, list, cur } = playerState;
-  const track = cur > -1 && list[cur];
+  const track = cur > -1 ? list[cur] : undefined;
 
   return (
     <Player_>
@@ -94,6 +96,7 @@ const Player = () => {
             </Progress_>
             <Time_>{fmtMSS(duration)}</Time_>
           </TimeInfo_>
+          <Lyric track={track} currentTime={currentTime} />
         </Cell>
         <Cell width={[1 / 3]}>
           <div />

@@ -32,37 +32,49 @@ const SongInfo_ = styled.div({
   ...padding(10),
 });
 
-const TrackInfo: React.FC<{ track: T_Track }> = ({ track }) => {
+const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
+  if (track === undefined) {
+    return null;
+  }
   return (
-    track && (
-      <TrackInfo_>
-        <AlbumCover_>
-          <Link href={`/album?q=${track.song.album.id}`} as={`/artist/${track.song.album.id}`}>
-            <A>
-              <Img_ src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${track.song.album.id}.jpg`} />
-            </A>
-          </Link>
-        </AlbumCover_>
-        <SongInfo_>
-          <div>
-            <Text>{track.song.name}</Text>
-          </div>
+    <TrackInfo_>
+      <AlbumCover_>
+        <Link
+          href={`/album?q=${track.song.album.id}`}
+          as={`/artist/${track.song.album.id}`}
+        >
+          <A>
+            <Img_
+              src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${
+                track.song.album.id
+              }.jpg`}
+            />
+          </A>
+        </Link>
+      </AlbumCover_>
+      <SongInfo_>
+        <div>
+          <Text>{track.song.name}</Text>
+        </div>
 
-          <div>
-            {implode(
-              i => (
-                <SubText key={i}>, </SubText>
-              ),
-              track.song.singers.map(singer => (
-                <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
-                  <SubText as={A}>{singer.name}</SubText>
-                </Link>
-              ))
-            )}
-          </div>
-        </SongInfo_>
-      </TrackInfo_>
-    )
+        <div>
+          {implode(
+            i => (
+              <SubText key={i}>, </SubText>
+            ),
+            track.song.singers.map(singer => (
+              <Link
+                key={singer.id}
+                href={`/artist?q=${singer.id}`}
+                as={`/artist/${singer.id}`}
+              >
+                <SubText as={A}>{singer.name}</SubText>
+              </Link>
+            ))
+          )}
+        </div>
+      </SongInfo_>
+    </TrackInfo_>
   );
 };
 

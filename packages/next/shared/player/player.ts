@@ -1,7 +1,7 @@
 import agent from '../agent';
 import Audio from './audio';
 import { T_Song } from '../types';
-interface T_Track {
+export interface T_Track {
   vendor: string;
   song: T_Song;
 }

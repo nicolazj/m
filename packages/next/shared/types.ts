@@ -32,3 +32,7 @@ export interface T_Playlist {
   name: string;
   pic: string;
 }
+
+export interface T_Lyric {
+  lines: { time: number; text: string }[];
+}
