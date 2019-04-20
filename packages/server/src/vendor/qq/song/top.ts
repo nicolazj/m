@@ -169,7 +169,6 @@ export interface Volume {
 }
 
 export default async (id: string) => {
-  console.log('id', id);
   const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg';
 
   const { data } = await axios.get<Root>(url, {

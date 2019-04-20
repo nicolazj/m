@@ -198,7 +198,6 @@ export default async (q: string, p = 0, n = 10) => {
       cr: '1',
     },
   });
-  console.log(JSON.stringify(data, null, 2));
   return data.data.song.list.map(song => ({
     id: song.mid,
     name: song.name,

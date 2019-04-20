@@ -55,7 +55,6 @@ export default async () => {
       Referer: 'https://y.qq.com/portal/playlist.html',
     },
   });
-  console.log(data);
   return data.data.list.map(list => ({
     id: list.dissid,
     name: list.dissname,

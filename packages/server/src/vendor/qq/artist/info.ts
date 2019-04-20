@@ -145,7 +145,6 @@ export interface Starshow {
 
 export default async (artistId: string) => {
   const singerid = await id(artistId);
-  console.log('singerid', singerid);
   const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg';
   const { data } = await axios.get<Root>(url, {
     params: {
