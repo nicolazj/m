@@ -26,6 +26,9 @@ const GlobalStyle = createGlobalStyle({
   html: {
     width: '100%',
     height: '100%',
+    fontSize: 'calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))',
+    fontFamily:
+      '-apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei",  sans-serif;',
   },
   body: {
     width: '100%',
@@ -51,7 +54,6 @@ const Main = styled.div({
 const Page = styled.div({
   flex: 1,
   paddingBottom: 100,
-  paddingLeft: 200,
 });
 const __DEV__ = process.env.NODE_ENV === 'development';
 

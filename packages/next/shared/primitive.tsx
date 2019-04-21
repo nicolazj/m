@@ -23,10 +23,8 @@ export const Square = styled.div({
 
 const textStyle = {
   color: '#fff',
-  fontSize: 16,
+  fontSize: '1rem',
   lineHeight: 1.7,
-  fontFamily:
-    '-apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei",  sans-serif;',
 };
 
 export const Text = styled.span(textStyle);
@@ -36,7 +34,7 @@ export const SubText = styled.span({
   '&:hover': {
     opacity: 1,
   },
-  fontSize: 14,
+  fontSize: '0.75rem',
 });
 export const A = styled.a({
   color: '#fff',
@@ -49,13 +47,13 @@ export const A = styled.a({
 });
 export const H1 = styled.h1({
   ...textStyle,
-  fontSize: 36,
+  fontSize: '2rem',
   ...margin(24, 0),
 });
 
 export const H2 = styled.h2({
   ...textStyle,
-  fontSize: 24,
+  fontSize: '1.5rem',
   ...margin(18, 0),
 });
 
@@ -70,8 +68,9 @@ export const Button = styled.button({
   color: '#fff',
   border: 'none',
   outline: 'none',
+  fontSize: '0.5rem',
   ...padding(10, 30),
-  ...transitions('background 0.066s ease-in', 'transform 0.066s ease-in '),
+  ...transitions('background 0.066s ease-in', 'transform 0.066s ease-in'),
   ':hover': {
     backgroundColor: '#1ed760',
     transform: 'scale(1.1)',
