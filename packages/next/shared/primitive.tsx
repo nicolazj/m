@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { padding, margin, transitions } from 'polished';
 import { Box, Flex } from '@rebass/grid';
+import LazyImage from './components/LazyImage';
 
 export const Grid = styled(Flex).attrs({ justifyContent: 'flex-start', flexWrap: 'wrap' })({
   height: '100%',
@@ -57,7 +58,7 @@ export const H2 = styled.h2({
   ...margin(18, 0),
 });
 
-export const Img = styled.img({
+export const Img = styled(LazyImage)({
   objectFit: 'cover',
   display: 'block',
 });

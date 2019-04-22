@@ -39,7 +39,7 @@ const charts = [
       { name: '韩国Mnet榜', id: 106 },
       { name: '英国UK榜', id: 107 },
       { name: '日本公信榜', id: 105 },
-      { name: ' 香港电台榜', id: 113 },
+      { name: '香港电台榜', id: 113 },
       { name: '香港商台榜', id: 114 },
       { name: '台湾Hito中文榜', id: 103 },
     ],
