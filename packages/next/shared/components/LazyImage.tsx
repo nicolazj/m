@@ -4,7 +4,7 @@ import { animated, useTransition } from 'react-spring';
 
 type ImgProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
-const LazyImage = (props: ImgProps) => {
+const LazyImage: React.FC<ImgProps> = props => {
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -27,12 +27,16 @@ const LazyImage = (props: ImgProps) => {
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
-  return transitions.map(({ item, props: style }) =>
-    item ? (
-      <animated.img {...props} style={style} />
-    ) : (
-      <animated.div ref={ref} className={props.className} style={style} />
-    )
+  return (
+    <>
+      {transitions.map(({ item, props: style }) =>
+        item ? (
+          <animated.img key={'loaded'} {...props} style={style} />
+        ) : (
+          <animated.div key={'unloaded'} ref={ref} className={props.className} style={style} />
+        )
+      )}
+    </>
   );
 };
 
