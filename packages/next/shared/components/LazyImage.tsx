@@ -19,15 +19,21 @@ const LazyImage: React.FC<ImgProps> = props => {
   const [show, setShow] = useState(() => isClient && is_cached(props.src!));
 
   useEffect(() => {
+    let canceled = false;
     if (inView && !show) {
       const img = new Image();
       if (props.src) {
         img.onload = () => {
-          setShow(true);
+          if (!canceled) {
+            setShow(true);
+          }
         };
         img.src = props.src;
       }
     }
+    return () => {
+      canceled = true;
+    };
   }, [inView]);
 
   const transitions = useTransition(show, null, {
