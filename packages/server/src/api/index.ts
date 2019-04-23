@@ -1,6 +1,6 @@
 import express from 'express';
 import helmet from 'helmet';
-import cat from '@m/shared/dist/cat';
+import cat from 'm_shared/dist/cat';
 const app = express();
 
 app.use(helmet());
