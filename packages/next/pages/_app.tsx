@@ -5,10 +5,10 @@ import { backgroundImages, normalize } from 'polished';
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { instance } from '../shared/agent';
 import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
-
+import { _axios } from '../shared/agent';
+import { isDev, isClient } from '../shared/constants';
 Router.events.on('routeChangeStart', (url: string) => {
   NProgress.start();
 });
@@ -55,15 +55,24 @@ const Page = styled.div({
   flex: 1,
   paddingBottom: 100,
 });
-const __DEV__ = process.env.NODE_ENV === 'development';
+
+const setAPIEndpoint = (c: NextAppContext) => {
+  const { ctx } = c;
+  const { req } = ctx;
+
+  if (!isDev) {
+    if (isClient) {
+      _axios.defaults.baseURL = '/api';
+    } else {
+      _axios.defaults.baseURL = `https://${req!.headers.host}/api`;
+    }
+  }
+};
 
 class MyApp extends App {
   static async getInitialProps(c: NextAppContext) {
     const { Component, ctx } = c;
-    const { req } = ctx;
-    if (req && !__DEV__) {
-      instance.defaults.baseURL = `https://${req.headers.host}/api`;
-    }
+    setAPIEndpoint(c);
 
     let pageProps = {};
 

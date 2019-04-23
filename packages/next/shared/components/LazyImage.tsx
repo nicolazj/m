@@ -1,6 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { animated, useTransition } from 'react-spring';
+import { isClient } from '../constants';
+function is_cached(src: string) {
+  var img = new Image();
+  img.src = src;
+  var complete = img.complete;
+  img.src = '';
+  console.log('cached', complete);
+  return complete;
+}
 
 type ImgProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
@@ -8,11 +17,12 @@ const LazyImage: React.FC<ImgProps> = props => {
   const [ref, inView] = useInView({
     threshold: 0,
   });
-  const [show, setShow] = useState(false);
+  const showIfCached = useCallback(() => isClient && is_cached(props.src!), [props.src]);
+  const [show, setShow] = useState(showIfCached);
 
   useEffect(() => {
     if (inView && !show) {
-      const img = window.document.createElement('img');
+      const img = new Image();
       if (props.src) {
         img.onload = () => {
           setShow(true);

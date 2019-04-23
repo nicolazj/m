@@ -1,22 +1,21 @@
 import axios from 'axios';
 
-const __DEV__ = process.env.NODE_ENV === 'development';
-export const instance = axios.create({
-  baseURL: __DEV__ ? 'http://localhost:4000/api' : '/api',
+export const _axios = axios.create({
+  baseURL: 'http://localhost:4000/api',
 });
 
 async function search(q: string) {
-  const { data } = await instance.get(`/search?q=${q}`);
+  const { data } = await _axios.get(`/search?q=${q}`);
   return data;
 }
 
 async function cred() {
-  const { data } = await instance.get(`/vendor/qq/cred`);
+  const { data } = await _axios.get(`/vendor/qq/cred`);
   return data;
 }
 
 async function lyric_by_id(q: string) {
-  const { data } = await instance.get(`/lyric/by_id?q=${q}`);
+  const { data } = await _axios.get(`/lyric/by_id?q=${q}`);
   return data;
 }
 
