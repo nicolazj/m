@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Img, Square, Text, Grid, Cell, A } from '../primitive';
-import { T_Artist } from '../types';
+import { T_Artist } from '@m/shared/dist/types';
 
 interface Props {
   artists: T_Artist[];

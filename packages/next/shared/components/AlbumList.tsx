@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Img, Square, Text, Grid, Cell, A } from '../primitive';
-import { T_Album } from '../types';
+import { T_Album } from '@m/shared/dist/types';
 
 interface Props {
   albums: T_Album[];

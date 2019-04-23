@@ -3,18 +3,12 @@ import styled from 'styled-components';
 
 import agent from '../shared/agent';
 import { H1, ContentSpacing } from '../shared/primitive';
-import { T_Album, T_Singer, T_Song, T_Playlist } from '../shared/types';
+import { T_Album, T_Singer, T_Song, T_Playlist, T_SearchResult } from '@m/shared/dist/types';
 import ArtistList from '../shared/components/ArtistList';
 import SongList from '../shared/components/SongList';
 import AlbumList from '../shared/components/AlbumList';
 import PlayListList from '../shared/components/PlayListList';
 
-interface SearchResult {
-  songs: T_Song[];
-  albums: T_Album[];
-  singers: T_Singer[];
-  playlists: T_Playlist[];
-}
 const SearchInput_ = styled.input({
   backgroundColor: '#282828',
   width: '100%',
@@ -29,7 +23,7 @@ const SearchInput_ = styled.input({
 
 const Search = () => {
   const [q, setQ] = useState('');
-  const [quickResult, setquickResult] = useState<SearchResult>({
+  const [quickResult, setquickResult] = useState<T_SearchResult>({
     songs: [],
     albums: [],
     singers: [],

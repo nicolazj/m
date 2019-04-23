@@ -5,16 +5,9 @@ import styled from 'styled-components';
 
 import PlayButton from '../shared/components/PlayButton';
 import SongList from '../shared/components/SongList';
-import {
-  Cell,
-  ContentSpacing,
-  Grid,
-  H1,
-  Img,
-  Square,
-} from '../shared/primitive';
+import { Cell, ContentSpacing, Grid, H1, Img, Square } from '../shared/primitive';
 import { rankR } from '../shared/resources';
-import { T_Song } from '../shared/types';
+import { T_Song } from '@m/shared/dist/types';
 
 const Img_ = styled(Img)({
   width: '100%',

@@ -7,17 +7,9 @@ import AlbumList from '../shared/components/AlbumList';
 import ArtistList from '../shared/components/ArtistList';
 import PlayButton from '../shared/components/PlayButton';
 import SongList from '../shared/components/SongList';
-import {
-  Cell,
-  ContentSpacing,
-  Grid,
-  H1,
-  Img,
-  Square,
-  Text,
-} from '../shared/primitive';
+import { Cell, ContentSpacing, Grid, H1, Img, Square, Text } from '../shared/primitive';
 import { artistR } from '../shared/resources';
-import { T_Album, T_Singer, T_Song } from '../shared/types';
+import { T_Album, T_Singer, T_Song } from '@m/shared/dist/types';
 
 interface Props {
   albums: T_Album[];
@@ -35,13 +27,7 @@ const Img_ = styled(Img)({
   position: 'absolute',
   top: 0,
 });
-const Artist: NextSFC<Props> = ({
-  albums,
-  songs,
-  relatedArtists,
-  artistId,
-  info,
-}) => (
+const Artist: NextSFC<Props> = ({ albums, songs, relatedArtists, artistId, info }) => (
   <ContentSpacing>
     <NextSeo
       config={{
@@ -54,9 +40,7 @@ const Artist: NextSFC<Props> = ({
         <Grid>
           <Cell width={[1 / 2, 1 / 2, 1 / 2, 1]}>
             <Square>
-              <Img_
-                src={`//y.gtimg.cn/music/photo_new/T001R800x800M000${artistId}.jpg`}
-              />
+              <Img_ src={`//y.gtimg.cn/music/photo_new/T001R800x800M000${artistId}.jpg`} />
             </Square>
           </Cell>
           <Cell width={[1 / 2, 1 / 2, 1 / 2, 1]}>

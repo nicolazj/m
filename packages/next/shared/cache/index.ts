@@ -87,11 +87,11 @@ export function createResource(fetch: any) {
   const hashInput = identityHashFn;
 
   const resource = {
-    write(input: any, result: any) {
+    write(result: any, input: any = 0) {
       const key = hashInput(input);
       writeResult(resource, key, result);
     },
-    read(input: any) {
+    read(input: any = 0) {
       // react-cache currently doesn't rely on context, but it may in the
       // future, so we read anyway to prevent access outside of render.
       const key = hashInput(input);

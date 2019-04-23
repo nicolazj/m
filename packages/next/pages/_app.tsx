@@ -9,7 +9,7 @@ import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
 import { _axios } from '../shared/agent';
 import { isDev, isClient } from '../shared/constants';
-Router.events.on('routeChangeStart', (url: string) => {
+Router.events.on('routeChangeStart', () => {
   NProgress.start();
 });
 Router.events.on('routeChangeComplete', (url: string) => {

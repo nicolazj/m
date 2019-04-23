@@ -1,5 +1,5 @@
 import React from 'react';
-import { T_Song } from '../types';
+import { T_Song } from '@m/shared/dist/types';
 import { Button } from '../primitive';
 import Player from '../player';
 import styled from 'styled-components';

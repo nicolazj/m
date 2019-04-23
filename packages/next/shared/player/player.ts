@@ -1,10 +1,7 @@
 import agent from '../agent';
 import Audio from './audio';
-import { T_Song } from '../types';
-export interface T_Track {
-  vendor: string;
-  song: T_Song;
-}
+import { T_Track } from '@m/shared/dist/types';
+
 abstract class Vendor {
   abstract getURL(info: T_Track): string;
 }
@@ -22,9 +19,9 @@ class QQMusic extends Vendor {
     this.vkey = vkey;
   }
   getURL(info: T_Track) {
-    return `http://dl.stream.qqmusic.qq.com/C400${info.song.id}.m4a?guid=${
-      this.guid
-    }&vkey=${this.vkey}&uin=0&fromtag=38`;
+    return `http://dl.stream.qqmusic.qq.com/C400${info.song.id}.m4a?guid=${this.guid}&vkey=${
+      this.vkey
+    }&uin=0&fromtag=38`;
   }
 }
 
@@ -93,9 +90,7 @@ class Player {
     this._play((this.state.cur + 1) % this.state.list.length);
   }
   skipBack() {
-    this._play(
-      (this.state.cur + this.state.list.length - 1) % this.state.list.length
-    );
+    this._play((this.state.cur + this.state.list.length - 1) % this.state.list.length);
   }
   pause() {
     this._audio.pause();

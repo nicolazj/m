@@ -19,7 +19,7 @@ const Img_ = styled(Img)({
 
 const Playlists: NextSFC<Props> = ({ playlists }) => {
   useEffect(() => {
-    playlistsR.write(0, playlists);
+    playlistsR.write(playlists);
   }, []);
   return (
     <ContentSpacing>
@@ -42,7 +42,7 @@ const Playlists: NextSFC<Props> = ({ playlists }) => {
   );
 };
 Playlists.getInitialProps = async () => {
-  let res = await playlistsR.read(0);
+  let res = await playlistsR.read();
 
   return { playlists: res };
 };

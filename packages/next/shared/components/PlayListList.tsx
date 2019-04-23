@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Img, Square, Text, Grid, Cell, A } from '../primitive';
-import { T_Playlist } from '../types';
+import { T_Playlist } from '@m/shared/dist/types';
 
 interface Props {
   playlists: T_Playlist[];
@@ -20,10 +20,7 @@ const PlayListList: React.FC<Props> = ({ playlists }) => {
     <Grid>
       {playlists.map(playlist => (
         <Cell key={playlist.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]}>
-          <Link
-            href={`/playlist?q=${playlist.id}`}
-            as={`/playlist/${playlist.id}`}
-          >
+          <Link href={`/playlist?q=${playlist.id}`} as={`/playlist/${playlist.id}`}>
             <A>
               <Square>
                 <Img_ src={playlist.pic} />

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
-import { T_Track } from '../../player/player';
-import { Text } from '../../primitive';
+import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
+
+import { T_Lyric, T_Track } from '@m/shared/dist/types';
+
 import agent from '../../agent';
-import { T_Lyric } from '../../types';
-import { useTransition, animated } from 'react-spring';
+import { Text } from '../../primitive';
+
 const Lyric_ = styled.div({
   height: '100%',
   overflow: 'hidden',
@@ -18,16 +19,13 @@ const Div_ = animated(
     width: '100%',
   })
 );
-const Lyric: React.FC<{ track?: T_Track; currentTime: number }> = ({
-  track,
-  currentTime,
-}) => {
-  const [lyric, setLyric] = useState<T_Lyric>({ lines: [] } as T_Lyric);
+const Lyric: React.FC<{ track?: T_Track; currentTime: number }> = ({ track, currentTime }) => {
+  const [lyric, setLyric] = useState<T_Lyric>({ lines: [] });
   useEffect(() => {
     let canceled = false;
 
     const getLyric = async (q: string) => {
-      const data: T_Lyric = await agent.lyric.by_id(q);
+      const data = await agent.lyric.by_id(q);
       if (!canceled) {
         setLyric({ ...data, lines: data.lines.reverse() });
       }
