@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { parse } from 'url';
-import { Cred } from '@m/shared/dist/types';
+import { T_QQCred } from '@m/shared/dist/types';
 
 const refreshURL = 'https://app.jike.ruguoapp.com/1.0/app_auth_tokens.refresh';
 const deviceID = 'C6430101-B131-4E38-999F-2FFAEE06FCA7';
@@ -33,5 +33,5 @@ export default async () => {
   const {
     query: { guid, vkey },
   } = parse(data.url, true);
-  return { guid, vkey } as Cred;
+  return { guid, vkey } as T_QQCred;
 };
