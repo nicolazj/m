@@ -6,8 +6,6 @@ import song from './song';
 import cred from './cred';
 import lyric from './lyric';
 import axios from 'axios';
-import add from 'm_shared';
-console.log(add(1, 2));
 axios.interceptors.response.use(
   function(response) {
     return response;
