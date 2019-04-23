@@ -3,12 +3,14 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import { backgroundImages, normalize } from 'polished';
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
+import { _axios } from '../shared/agent';
+import Layout from '../shared/components/Layout';
 import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
-import { _axios } from '../shared/agent';
-import { isDev, isClient } from '../shared/constants';
+import { isClient, isDev } from '../shared/constants';
+
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
 });
@@ -41,19 +43,6 @@ const GlobalStyle = createGlobalStyle({
     display: 'flex',
     flexDirection: 'column',
   },
-});
-
-const Main = styled.div({
-  flex: 1,
-  display: 'flex',
-  ...backgroundImages(
-    'linear-gradient(to right bottom, rgb(47, 72, 106), rgb(0, 0, 0))',
-    'linear-gradient(transparent, rgb(0, 0, 0) 70%)'
-  ),
-});
-const Page = styled.div({
-  flex: 1,
-  paddingBottom: 100,
 });
 
 const setAPIEndpoint = (c: NextAppContext) => {
@@ -97,13 +86,7 @@ class MyApp extends App {
       <Container>
         <Normalize />
         <GlobalStyle />
-        <Main>
-          <Sidebar />
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </Main>
-        <Player />
+        <Layout sidebar={<Sidebar />} player={<Player />} page={<Component {...pageProps} />} />
       </Container>
     );
   }

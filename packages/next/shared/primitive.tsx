@@ -69,7 +69,7 @@ export const Button = styled.button({
   color: '#fff',
   border: 'none',
   outline: 'none',
-  fontSize: '0.5rem',
+  fontSize: '0.6rem',
   ...padding(10, 30),
   ...transitions('background 0.066s ease-in', 'transform 0.066s ease-in'),
   ':hover': {

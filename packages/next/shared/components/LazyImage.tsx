@@ -41,6 +41,7 @@ const LazyImage: React.FC<ImgProps> = props => {
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
+
   return (
     <>
       {transitions.map(({ item, props: style }) =>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { T_Track } from '../../player/player';
-import { Img, Text, SubText, A } from '../../primitive';
+import { T_Track } from '@m/shared/dist/types';
+import { Img, Text, SubText, A, Square } from '../../primitive';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { padding } from 'polished';
@@ -18,10 +18,13 @@ const AlbumCover_ = styled.div({
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
+  width: 100,
 });
 const Img_ = styled(Img)({
-  height: 80,
-  width: 80,
+  width: '100%',
+  height: '100%',
+  top: 0,
+  position: 'absolute',
 });
 
 const SongInfo_ = styled.div({
@@ -39,16 +42,11 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
   return (
     <TrackInfo_>
       <AlbumCover_>
-        <Link
-          href={`/album?q=${track.song.album.id}`}
-          as={`/artist/${track.song.album.id}`}
-        >
+        <Link href={`/album?q=${track.song.album.id}`} as={`/artist/${track.song.album.id}`}>
           <A>
-            <Img_
-              src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${
-                track.song.album.id
-              }.jpg`}
-            />
+            <Square>
+              <Img_ src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${track.song.album.id}.jpg`} />
+            </Square>
           </A>
         </Link>
       </AlbumCover_>
@@ -63,11 +61,7 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
               <SubText key={i}>, </SubText>
             ),
             track.song.singers.map(singer => (
-              <Link
-                key={singer.id}
-                href={`/artist?q=${singer.id}`}
-                as={`/artist/${singer.id}`}
-              >
+              <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
                 <SubText as={A}>{singer.name}</SubText>
               </Link>
             ))
