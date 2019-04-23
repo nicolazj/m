@@ -6,7 +6,6 @@ import song from './song';
 import cred from './cred';
 import lyric from './lyric';
 import axios from 'axios';
-
 axios.interceptors.response.use(
   function(response) {
     return response;

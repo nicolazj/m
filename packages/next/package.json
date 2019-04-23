@@ -1,5 +1,5 @@
 {
-  "name": "with-typescript-styled-components",
+  "name": "m_next",
   "version": "1.0.0",
   "scripts": {
     "start": "fkill :8000 -s && next -p 8000 &",
