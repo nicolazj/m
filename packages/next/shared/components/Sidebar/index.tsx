@@ -5,8 +5,9 @@ import { H1 } from '../../primitive';
 import Nav from './Nav';
 const Sidebar_ = styled.div({
   flex: 1,
+  display: 'flex',
+  flexWrap: 'wrap',
   background: rgba(0, 0, 0, 0.8),
-  ...padding(24),
 });
 
 const Sidebar = () => (

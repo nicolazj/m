@@ -21,17 +21,14 @@ const AlbumCover_ = styled.div({
   width: 100,
 });
 const Img_ = styled(Img)({
-  width: '100%',
-  height: '100%',
-  top: 0,
-  position: 'absolute',
+  height: 80,
+  width: 80,
 });
 
 const SongInfo_ = styled.div({
   flex: 1,
   textAlign: 'left',
   height: '100%',
-
   ...padding(10),
 });
 
@@ -44,9 +41,7 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
       <AlbumCover_>
         <Link href={`/album?q=${track.song.album.id}`} as={`/artist/${track.song.album.id}`}>
           <A>
-            <Square>
-              <Img_ src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${track.song.album.id}.jpg`} />
-            </Square>
+            <Img_ src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${track.song.album.id}.jpg`} />
           </A>
         </Link>
       </AlbumCover_>
