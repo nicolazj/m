@@ -14,15 +14,14 @@ const TrackInfo_ = styled.div({
 });
 
 const AlbumCover_ = styled.div({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
   height: '100%',
-  width: 100,
+  width: 80,
 });
 const Img_ = styled(Img)({
-  height: 80,
-  width: 80,
+  height: '100%',
+  width: '100%',
+  position: 'absolute',
+  top: 0,
 });
 
 const SongInfo_ = styled.div({
@@ -39,9 +38,18 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
   return (
     <TrackInfo_>
       <AlbumCover_>
-        <Link href={`/album?q=${track.song.album.id}`} as={`/artist/${track.song.album.id}`}>
+        <Link
+          href={`/album?q=${track.song.album.id}`}
+          as={`/artist/${track.song.album.id}`}
+        >
           <A>
-            <Img_ src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${track.song.album.id}.jpg`} />
+            <Square>
+              <Img_
+                src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${
+                  track.song.album.id
+                }.jpg`}
+              />
+            </Square>
           </A>
         </Link>
       </AlbumCover_>
@@ -56,11 +64,24 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
               <SubText key={i}>, </SubText>
             ),
             track.song.singers.map(singer => (
-              <Link key={singer.id} href={`/artist?q=${singer.id}`} as={`/artist/${singer.id}`}>
+              <Link
+                key={singer.id}
+                href={`/artist?q=${singer.id}`}
+                as={`/artist/${singer.id}`}
+              >
                 <SubText as={A}>{singer.name}</SubText>
               </Link>
             ))
           )}
+        </div>
+        <div>
+          <Link
+            key={track.song.album.id}
+            href={`/album?q=${track.song.album.id}`}
+            as={`/album/${track.song.album.id}`}
+          >
+            <SubText as={A}>{track.song.album.name}</SubText>
+          </Link>
         </div>
       </SongInfo_>
     </TrackInfo_>

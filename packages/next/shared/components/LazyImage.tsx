@@ -40,6 +40,7 @@ const LazyImage: React.FC<ImgProps> = props => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
+    config: {},
   });
 
   return (
@@ -48,7 +49,12 @@ const LazyImage: React.FC<ImgProps> = props => {
         item ? (
           <animated.img key={'loaded'} {...props} style={style} />
         ) : (
-          <animated.div key={'unloaded'} ref={ref} className={props.className} style={style} />
+          <animated.div
+            key={'unloaded'}
+            ref={ref}
+            className={props.className}
+            style={style}
+          />
         )
       )}
     </>

@@ -1,7 +1,7 @@
+import { backgroundImages, padding } from 'polished';
 import React from 'react';
-import styled from 'styled-components';
-import { padding, backgroundImages } from 'polished';
-import { useMedia } from 'use-media';
+import styled, { createGlobalStyle } from 'styled-components';
+
 interface Props {
   page: React.ReactNode;
   sidebar: React.ReactNode;
@@ -24,34 +24,46 @@ const BG_ = styled.div({
   ),
 });
 
-const Layout: React.FC<Props> = ({ page, sidebar, player }) => {
-  const isWide = useMedia({ minWidth: 768 });
-  const Sidebar_ = styled.div({
-    position: 'fixed',
-    height: isWide ? '100%' : UP,
-    width: isWide ? LEFT : '100%',
-    left: 0,
-    ...padding(0, 0, isWide ? BOTTOM : 0, 0),
+const LayoutCSS = createGlobalStyle({
+  '#page': {
+    flex: 1,
+    ...padding(0, 0, BOTTOM, LEFT),
+  },
+  '#sidebar': {
     display: 'flex',
-  });
-  const Player_ = styled.div({
+    position: 'fixed',
+    height: '100%',
+    width: LEFT,
+    ...padding(0, 0, BOTTOM, 0),
+  },
+  '#player': {
+    display: 'flex',
     position: 'fixed',
     bottom: 0,
     height: BOTTOM,
     width: '100%',
-    display: 'flex',
-  });
-  const Page_ = styled.div({
-    flex: 1,
-    ...padding(isWide ? 0 : UP, 0, BOTTOM, isWide ? LEFT : 0),
-  });
+  },
+  '@media (max-width: 768px)': {
+    '#page': {
+      flex: 1,
+      ...padding(UP, 0, BOTTOM, 0),
+    },
+    '#sidebar': {
+      height: UP,
+      width: '100%',
+      ...padding(0, 0, 0, 0),
+    },
+  },
+});
+
+const Layout: React.FC<Props> = ({ page, sidebar, player }) => {
   return (
     <>
+      <LayoutCSS />
       <BG_ />
-      <Page_>{page}</Page_>
-      <Sidebar_> {sidebar}</Sidebar_>
-
-      <Player_> {player}</Player_>
+      <div id="page">{page}</div>
+      <div id="sidebar"> {sidebar}</div>
+      <div id="player"> {player}</div>
     </>
   );
 };

@@ -5,18 +5,29 @@ import styled from 'styled-components';
 
 const Nav_ = styled.nav({
   display: 'flex',
-  flexDirection: 'column',
+  flexWrap: 'wrap',
+  height: 50,
 });
 
+const Item_ = styled.div({
+  width: 110,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
 const Nav = () => {
   return (
     <Nav_>
-      <Link href="/">
-        <Text as={A}>发现</Text>
-      </Link>
-      <Link href="/search">
-        <Text as={A}>搜索</Text>
-      </Link>
+      <Item_>
+        <Link href="/">
+          <Text as={A}>发现</Text>
+        </Link>
+      </Item_>
+      <Item_>
+        <Link href="/search">
+          <Text as={A}>搜索</Text>
+        </Link>
+      </Item_>
     </Nav_>
   );
 };

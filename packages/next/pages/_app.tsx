@@ -1,7 +1,7 @@
 import App, { Container, NextAppContext } from 'next/app';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { backgroundImages, normalize } from 'polished';
+import { normalize } from 'polished';
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
@@ -86,7 +86,11 @@ class MyApp extends App {
       <Container>
         <Normalize />
         <GlobalStyle />
-        <Layout sidebar={<Sidebar />} player={<Player />} page={<Component {...pageProps} />} />
+        <Layout
+          sidebar={<Sidebar />}
+          player={<Player />}
+          page={<Component {...pageProps} />}
+        />
       </Container>
     );
   }
