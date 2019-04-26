@@ -1,10 +1,12 @@
-import styled from 'styled-components';
 import { memo } from 'react';
+import styled from 'styled-components';
+
 const icons = {
   play: '\f132',
   pause: '\f130',
   next: '\f148',
   prev: '\f146',
+  track: '\f156',
 };
 
 type T = typeof icons;
