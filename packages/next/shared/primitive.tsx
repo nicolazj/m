@@ -1,14 +1,20 @@
+import { margin, padding, transitions } from 'polished';
 import styled from 'styled-components';
-import { padding, margin, transitions } from 'polished';
+
 import { Box, Flex } from '@rebass/grid';
+
 import LazyImage from './components/LazyImage';
 
-export const Grid = styled(Flex).attrs({ justifyContent: 'flex-start', flexWrap: 'wrap' })({
+export const Grid = styled(Flex).attrs({
+  justifyContent: 'flex-start',
+  flexWrap: 'wrap',
+})({
   height: '100%',
 });
-export const Cell = styled(Box).attrs({ p: 2 })({
+export const Cell = styled(Box).attrs(({ p }) => ({ p: p ? p : 2 }))({
   textAlign: 'center',
   height: '100%',
+  overflow: 'hidden',
 });
 
 export const ContentSpacing = styled.div({
@@ -76,4 +82,18 @@ export const Button = styled.button({
     backgroundColor: '#1ed760',
     transform: 'scale(1.1)',
   },
+});
+
+export const Truncated = styled(Text)({
+  display: 'block',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  minWidth: 0,
+});
+export const SubTruncated = styled(SubText)({
+  display: 'block',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
 });

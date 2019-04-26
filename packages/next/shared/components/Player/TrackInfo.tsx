@@ -1,10 +1,11 @@
+import Link from 'next/link';
+import { padding } from 'polished';
 import React from 'react';
+import styled from 'styled-components';
 
 import { T_Track } from '@m/shared/dist/types';
-import { Img, Text, SubText, A, Square } from '../../primitive';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { padding } from 'polished';
+
+import { A, Img, Square, SubText, SubTruncated, Truncated } from '../../primitive';
 import { implode } from '../../utils';
 
 const TrackInfo_ = styled.div({
@@ -28,8 +29,11 @@ const SongInfo_ = styled.div({
   flex: 1,
   textAlign: 'left',
   height: '100%',
+  minWidth: 0,
   ...padding(10),
 });
+
+const SongInfoSection_ = styled.div({});
 
 const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
   if (track === undefined) {
@@ -54,11 +58,11 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
         </Link>
       </AlbumCover_>
       <SongInfo_>
-        <div>
-          <Text>{track.song.name}</Text>
-        </div>
+        <SongInfoSection_>
+          <Truncated>{track.song.name}</Truncated>
+        </SongInfoSection_>
 
-        <div>
+        <SongInfoSection_>
           {implode(
             i => (
               <SubText key={i}>, </SubText>
@@ -73,16 +77,16 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
               </Link>
             ))
           )}
-        </div>
-        <div>
+        </SongInfoSection_>
+        <SongInfoSection_>
           <Link
             key={track.song.album.id}
             href={`/album?q=${track.song.album.id}`}
             as={`/album/${track.song.album.id}`}
           >
-            <SubText as={A}>{track.song.album.name}</SubText>
+            <SubTruncated as={A}>「 {track.song.album.name} 」</SubTruncated>
           </Link>
-        </div>
+        </SongInfoSection_>
       </SongInfo_>
     </TrackInfo_>
   );

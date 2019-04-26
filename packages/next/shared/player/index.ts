@@ -6,7 +6,7 @@ let player: Player | null = null;
 if (isClient) {
   player = new Player();
   player.subscribe(p => {
-    console.log(p);
+    // console.log(p);
   });
 }
 

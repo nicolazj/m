@@ -1,8 +1,10 @@
+import { rgba } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
-import { rgba } from 'polished';
+
 import { H1 } from '../../primitive';
 import Nav from './Nav';
+
 const Sidebar_ = styled.div({
   flex: 1,
   display: 'flex',
@@ -10,7 +12,7 @@ const Sidebar_ = styled.div({
   background: rgba(0, 0, 0, 0.8),
 });
 const D1 = styled.div({
-  width: 150,
+  width: 100,
   height: 50,
   display: 'flex',
   justifyContent: 'center',

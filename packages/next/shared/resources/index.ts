@@ -15,7 +15,12 @@ export const playlistR = createResource(async (q: string) => {
   return data;
 });
 export const artistR = createResource(async (artistId: string) => {
-  const [{ data: albums }, { data: songs }, { data: relatedArtists }, { data: info }] = await Promise.all([
+  const [
+    { data: albums },
+    { data: songs },
+    { data: relatedArtists },
+    { data: info },
+  ] = await Promise.all([
     _axios.get(`/album/by_artist?q=${artistId}`),
     _axios.get(`/song/popular?q=${artistId}`),
     _axios.get(`/artist/similar?q=${artistId}`),

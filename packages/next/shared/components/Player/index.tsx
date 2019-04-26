@@ -5,13 +5,14 @@ import styled from 'styled-components';
 import player from '../../player';
 import { Cell, Grid, Text } from '../../primitive';
 import { fmtMSS } from '../../utils';
+import Icon from '../Icon';
+import Lyric from './Lyric';
 import ProgressBar from './ProgressBar';
 import TrackInfo from './TrackInfo';
-import Lyric from './Lyric';
-import Icon from '../Icon';
 
 const Player_ = styled.div({
   flex: 1,
+  maxWidth: '100vw',
   backgroundColor: '#282828',
   ...border('top', '1px', 'solid', '#000'),
 });
@@ -69,14 +70,22 @@ const Player = () => {
   return (
     <Player_>
       <Grid>
-        <Cell width={[1 / 3]}>
+        <Cell width={[0, 1 / 3]} p={[0, 2]}>
           <TrackInfo track={track} />
         </Cell>
-        <Cell width={[1 / 3]}>
+        <Cell width={[1, 1 / 3]}>
           <div>
             <Icon icon="prev" as={Button_} onClick={() => player!.skipBack()} />
-            <Icon icon={playing ? 'pause' : 'play'} as={Button_} onClick={() => player!.pause()} />
-            <Icon icon="next" as={Button_} onClick={() => player!.skipForward()} />
+            <Icon
+              icon={playing ? 'pause' : 'play'}
+              as={Button_}
+              onClick={() => player!.pause()}
+            />
+            <Icon
+              icon="next"
+              as={Button_}
+              onClick={() => player!.skipForward()}
+            />
           </div>
           <TimeInfo_>
             <Time_>{fmtMSS(currentTime)}</Time_>
@@ -87,9 +96,7 @@ const Player = () => {
           </TimeInfo_>
           <Lyric track={track} currentTime={currentTime} />
         </Cell>
-        <Cell width={[1 / 3]}>
-          <div />
-        </Cell>
+        <Cell width={[0, 1 / 3]} p={[0, 2]} />
       </Grid>
     </Player_>
   );

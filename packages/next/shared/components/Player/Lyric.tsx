@@ -5,12 +5,13 @@ import styled from 'styled-components';
 import { T_Lyric, T_Track } from '@m/shared/dist/types';
 
 import agent from '../../agent';
-import { Text } from '../../primitive';
+import { Truncated } from '../../primitive';
 
 const Lyric_ = styled.div({
   height: '100%',
   overflow: 'hidden',
   position: 'relative',
+  minWidth: 0,
 });
 
 const Div_ = animated(
@@ -19,7 +20,10 @@ const Div_ = animated(
     width: '100%',
   })
 );
-const Lyric: React.FC<{ track?: T_Track; currentTime: number }> = ({ track, currentTime }) => {
+const Lyric: React.FC<{ track?: T_Track; currentTime: number }> = ({
+  track,
+  currentTime,
+}) => {
   const [lyric, setLyric] = useState<T_Lyric>({ lines: [] });
   useEffect(() => {
     let canceled = false;
@@ -63,7 +67,7 @@ const Lyric: React.FC<{ track?: T_Track; currentTime: number }> = ({ track, curr
             ...props,
           }}
         >
-          <Text>{item.text}</Text>
+          <Truncated>{item.text}</Truncated>
         </Div_>
       ))}
     </Lyric_>
