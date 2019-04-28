@@ -1,6 +1,7 @@
+import { transitions } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
-import { transitions } from 'polished';
+
 const Progress_ = styled.div({
   width: '100%',
   height: 4,
@@ -15,7 +16,7 @@ const ProgressBar_ = styled.div({
 });
 const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
   <Progress_>
-    <ProgressBar_ progress={progress} style={{ width: `${progress * 100}%` }} />
+    <ProgressBar_ style={{ width: `${progress * 100}%` }} />
   </Progress_>
 );
 

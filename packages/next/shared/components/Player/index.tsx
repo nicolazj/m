@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { border, padding } from 'polished';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -38,6 +39,7 @@ const TimeInfo_ = styled.div({
 
 const Time_ = styled(Text)({
   fontSize: 12,
+  width: 40,
   ...padding(0, 6),
 });
 
@@ -70,10 +72,10 @@ const Player = () => {
   return (
     <Player_>
       <Grid>
-        <Cell width={[0, 1 / 3]} p={[0, 2]}>
+        <Cell width={[0, 1 / 4]} p={[0, 2]}>
           <TrackInfo track={track} />
         </Cell>
-        <Cell width={[1, 1 / 3]}>
+        <Cell width={[1, 1 / 2]}>
           <div>
             <Icon icon="prev" as={Button_} onClick={() => player!.skipBack()} />
             <Icon
@@ -96,7 +98,11 @@ const Player = () => {
           </TimeInfo_>
           <Lyric track={track} currentTime={currentTime} />
         </Cell>
-        <Cell width={[0, 1 / 3]} p={[0, 2]} />
+        <Cell width={[0, 1 / 4]} p={[0, 2]}>
+          <Link href="/playing">
+            <Icon icon="queue" as={Button_} />
+          </Link>
+        </Cell>
       </Grid>
     </Player_>
   );

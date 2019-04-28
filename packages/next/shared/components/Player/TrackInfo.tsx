@@ -84,7 +84,7 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
             href={`/album?q=${track.song.album.id}`}
             as={`/album/${track.song.album.id}`}
           >
-            <SubTruncated as={A}>「 {track.song.album.name} 」</SubTruncated>
+            <SubTruncated as={A}> {track.song.album.name} </SubTruncated>
           </Link>
         </SongInfoSection_>
       </SongInfo_>

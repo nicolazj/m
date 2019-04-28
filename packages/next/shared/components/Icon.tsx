@@ -7,6 +7,7 @@ const icons = {
   next: '\f148',
   prev: '\f146',
   track: '\f156',
+  queue: '\f13a',
 };
 
 type T = typeof icons;

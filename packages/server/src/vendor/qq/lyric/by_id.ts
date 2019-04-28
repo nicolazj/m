@@ -1,7 +1,9 @@
 import axios from 'axios';
-import song_by_id from '../song/by_id';
 import he from 'he';
 import lrc from 'lrc.js';
+
+import song_by_id from '../song/by_id';
+
 export interface Root {
   retcode: number;
   code: number;

@@ -1,6 +1,8 @@
 const url = require('url');
-var http = require('http');
+const http = require('http');
+const httpProxy = require('http-proxy');
 const routes = {};
+const proxy = httpProxy.createProxyServer();
 require('glob').glob('dist/api/**/*.js', undefined, function(er, files) {
   files.forEach(function(file) {
     name = file.replace('dist', '').replace('/index.js', '');
@@ -19,9 +21,10 @@ const app = async (req, res) => {
   const key = Object.keys(routes).find(key => pathname === key);
 
   if (!key) {
-    res.writeHead(404);
-    res.end();
-
+    console.log('no key', key);
+    proxy.web(req, res, {
+      target: 'http://localhost:8000',
+    });
     return;
   }
 

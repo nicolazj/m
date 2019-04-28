@@ -2,10 +2,8 @@ import axios from 'axios';
 
 import { T_Lyric, T_QQCred, T_SearchResult } from '@m/shared/dist/types';
 
-import { isDev } from './constants';
-
 export const _axios = axios.create({
-  baseURL: isDev ? 'http://192.168.1.8:4000/api' : '/api',
+  baseURL: '/api',
 });
 
 async function search(q: string) {
