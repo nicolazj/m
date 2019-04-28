@@ -1,12 +1,11 @@
 import { margin } from 'polished';
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { T_Song } from '@m/shared/dist/types';
 
-import Player from '../player';
 import { Button } from '../primitive';
-
+import { PlayerContext } from '../ctx/player';
 interface Props {
   songs: T_Song[];
 }
@@ -15,17 +14,20 @@ const Wrapper_ = styled.div({
   ...margin('1em'),
 });
 const PlayButton: React.FC<Props> = ({ songs }) => {
+  const playerState = useContext(PlayerContext);
+
   const play = (songs: T_Song[]) => {
-    Player!.playList(
+    playerState.player.playList(
       songs.map(song => ({
         vendor: 'qq',
         song,
       }))
     );
   };
+
   return (
     <Wrapper_>
-      <Button onClick={() => play(songs)}>播放</Button>{' '}
+      <Button onClick={() => play(songs)}>播放</Button>
     </Wrapper_>
   );
 };

@@ -53,3 +53,11 @@ export interface T_Track {
   vendor: string;
   song: T_Song;
 }
+
+export interface T_PlayerStatus {
+  playing: boolean;
+  duration: number;
+  currentTime: number;
+  list: T_Song[];
+  cur: number;
+}

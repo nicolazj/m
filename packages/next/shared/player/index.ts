@@ -1,13 +1,3 @@
-import { isClient } from '../constants';
-import Player from './player';
-
-let player: Player | null = null;
-
-if (isClient) {
-  player = new Player();
-  player.subscribe(p => {
-    // console.log(p);
-  });
-}
+import player from './player';
 
 export default player;
