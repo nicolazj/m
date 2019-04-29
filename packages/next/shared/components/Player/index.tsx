@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import { border, padding } from 'polished';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import player from '../../player';
+import { PlayerContext } from '../../ctx/player';
+import getPlayer from '../../player';
 import { Cell, Grid, Text } from '../../primitive';
 import { fmtMSS } from '../../utils';
 import Icon from '../Icon';
 import Lyric from './Lyric';
 import ProgressBar from './ProgressBar';
 import TrackInfo from './TrackInfo';
-import { PlayerContext } from '../../ctx/player';
+
 const Player_ = styled.div({
   flex: 1,
   maxWidth: '100vw',
@@ -53,6 +54,16 @@ const Player = () => {
   const { duration, currentTime, playing, list, cur, player } = playerState;
   const track = cur > -1 ? list[cur] : undefined;
 
+  const skipBack = () => {
+    getPlayer().skipBack();
+  };
+  const skipForward = () => {
+    getPlayer().skipForward();
+  };
+  const pause = () => {
+    getPlayer().pause();
+  };
+
   return (
     <Player_>
       <Grid>
@@ -61,9 +72,9 @@ const Player = () => {
         </Cell>
         <Cell width={[1, 1 / 2]}>
           <div>
-            <Icon icon="prev" as={Button_} onClick={() => player!.skipBack()} />
-            <Icon icon={playing ? 'pause' : 'play'} as={Button_} onClick={() => player!.pause()} />
-            <Icon icon="next" as={Button_} onClick={() => player!.skipForward()} />
+            <Icon icon="prev" as={Button_} onClick={skipBack} />
+            <Icon icon={playing ? 'pause' : 'play'} as={Button_} onClick={pause} />
+            <Icon icon="next" as={Button_} onClick={skipForward} />
           </div>
           <TimeInfo_>
             <Time_>{fmtMSS(currentTime)}</Time_>

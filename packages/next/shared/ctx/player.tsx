@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
-
 import { T_PlayerStatus } from '@m/shared/dist/types';
 
+import getPlayer from '../player';
 const defaultState: T_PlayerStatus = {
   duration: 0,
   currentTime: 0,
@@ -9,18 +9,19 @@ const defaultState: T_PlayerStatus = {
   list: [],
   cur: -1,
 };
-export const PlayerContext = createContext(defaultState);
+export const PlayerContext = createContext<T_PlayerStatus>(defaultState);
 
 const Provider: React.FC = ({ children }) => {
-  const [playerState, setPlayerState] = useState(defaultState);
+  const [playerState, setPlayerState] = useState<T_PlayerStatus>(defaultState);
 
   useEffect(() => {
-    import('../player').then(({ default: Player }) => {
-      const player = new Player();
-      player.subscribe(p => {
-        setPlayerState({ ...p, player });
-      });
+    const player = getPlayer();
+    const unsub = player.subscribe(p => {
+      setPlayerState({ ...p });
     });
+    return () => {
+      unsub();
+    };
   }, []);
   return <PlayerContext.Provider value={playerState}>{children}</PlayerContext.Provider>;
 };

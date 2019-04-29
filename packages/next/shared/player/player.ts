@@ -101,7 +101,7 @@ class Player {
 
   subscribe(listener: PlayerListener) {
     this.listeners.push(listener);
-    this.update();
+    listener(this.state);
     return () => {
       const idx = this.listeners.indexOf(listener);
       this.listeners.splice(idx, 1);

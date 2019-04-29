@@ -1,3 +1,9 @@
-import player from './player';
+import Player from './player';
 
-export default player;
+let player: Player | undefined = undefined;
+
+function getPlayer() {
+  return player ? player : (player = new Player());
+}
+
+export default getPlayer;
