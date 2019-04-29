@@ -1,28 +1,24 @@
-import { T_PlayerStatus, T_Track } from '@m/shared/dist/types';
+import { T_PlayerStatus, T_QQCred, T_Track } from '@m/shared/dist/types';
 
 import agent from '../agent';
 import Audio from './audio';
 
 abstract class Vendor {
-  abstract getURL(info: T_Track): string;
+  abstract async getURL(info: T_Track): Promise<string>;
 }
 
 class QQMusic extends Vendor {
-  private guid: string = '';
-  private vkey: string = '';
+  private p: Promise<T_QQCred>;
   constructor() {
     super();
-    this.init();
+    this.p = agent.vendor.qq.cred();
   }
-  async init() {
-    const { guid, vkey } = await agent.vendor.qq.cred();
-    this.guid = guid;
-    this.vkey = vkey;
-  }
-  getURL(info: T_Track) {
-    return `http://dl.stream.qqmusic.qq.com/C400${info.song.id}.m4a?guid=${this.guid}&vkey=${
-      this.vkey
-    }&uin=0&fromtag=38`;
+
+  async getURL(info: T_Track) {
+    const { guid, vkey } = await this.p;
+    return `http://dl.stream.qqmusic.qq.com/C400${
+      info.song.id
+    }.m4a?guid=${guid}&vkey=${vkey}&uin=0&fromtag=38`;
   }
 }
 
@@ -64,10 +60,10 @@ class Player {
     this._audio = audio;
   }
 
-  _play(cur: number) {
+  async _play(cur: number) {
     const track = this.state.list[cur];
     const vendor = track.vendor;
-    const url = this.vendors[vendor].getURL(track);
+    const url = await this.vendors[vendor].getURL(track);
     this._audio.play(url);
     this.state.cur = cur;
   }
@@ -93,7 +89,9 @@ class Player {
     this._play((this.state.cur + 1) % this.state.list.length);
   }
   skipBack() {
-    this._play((this.state.cur + this.state.list.length - 1) % this.state.list.length);
+    this._play(
+      (this.state.cur + this.state.list.length - 1) % this.state.list.length
+    );
   }
   pause() {
     this._audio.pause();

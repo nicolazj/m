@@ -1,7 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
+
 import { T_PlayerStatus } from '@m/shared/dist/types';
 
 import getPlayer from '../player';
+
 const defaultState: T_PlayerStatus = {
   duration: 0,
   currentTime: 0,
@@ -19,11 +21,13 @@ const Provider: React.FC = ({ children }) => {
     const unsub = player.subscribe(p => {
       setPlayerState({ ...p });
     });
-    return () => {
-      unsub();
-    };
+    return unsub;
   }, []);
-  return <PlayerContext.Provider value={playerState}>{children}</PlayerContext.Provider>;
+  return (
+    <PlayerContext.Provider value={playerState}>
+      {children}
+    </PlayerContext.Provider>
+  );
 };
 
 export default Provider;

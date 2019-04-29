@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { T_Song } from '@m/shared/dist/types';
 
-import Player from '../player';
+import getPlayer from '../player';
 import { A, SubText, Text } from '../primitive';
 import { implode } from '../utils';
 import Icon from './Icon';
@@ -42,7 +42,7 @@ const PlayIcon = styled.button({
   },
 });
 const play = (song: T_Song) => {
-  Player!.play({ vendor: 'qq', song });
+  getPlayer().play({ vendor: 'qq', song });
 };
 const SongList: React.FC<Props> = ({ songs }) => {
   return (
