@@ -68,7 +68,12 @@ export const Img = styled(LazyImage)({
   objectFit: 'cover',
   display: 'block',
 });
-
+export const CoverImg = styled(Img)({
+  width: '100%',
+  height: '100%',
+  top: 0,
+  position: 'absolute',
+});
 export const Button = styled.button({
   backgroundColor: '#1db954',
   borderRadius: 20,

@@ -1,6 +1,15 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { ContentSpacing, Square, Grid, Cell, Img, A, Text } from '../shared/primitive';
+import {
+  ContentSpacing,
+  Square,
+  Grid,
+  Cell,
+  Img,
+  A,
+  Text,
+  CoverImg,
+} from '../shared/primitive';
 import { playlistsR } from '../shared/resources';
 
 import Nav from '../shared/components/Nav';
@@ -9,13 +18,6 @@ import styled from 'styled-components';
 interface Props {
   playlists: any[];
 }
-
-const Img_ = styled(Img)({
-  width: '100%',
-  height: '100%',
-  top: 0,
-  position: 'absolute',
-});
 
 const Playlists: NextSFC<Props> = ({ playlists }) => {
   useEffect(() => {
@@ -30,7 +32,7 @@ const Playlists: NextSFC<Props> = ({ playlists }) => {
             <Link href={`/playlist?q=${pl.id}`} as={`/playlist/${pl.id}`}>
               <A>
                 <Square>
-                  <Img_ src={pl.pic} />
+                  <CoverImg src={pl.pic} />
                 </Square>
                 <Text>{pl.name}</Text>
               </A>

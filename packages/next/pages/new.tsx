@@ -1,6 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import { ContentSpacing, Square, Grid, Cell, Img, A, Text } from '../shared/primitive';
+import {
+  ContentSpacing,
+  Square,
+  Grid,
+  Cell,
+  A,
+  Text,
+  CoverImg,
+} from '../shared/primitive';
 import { newAlbumR } from '../shared/resources';
 
 import Nav from '../shared/components/Nav';
@@ -11,13 +19,6 @@ interface Props {
   albums: T_Album[];
 }
 
-const Img_ = styled(Img)({
-  width: '100%',
-  height: '100%',
-  top: 0,
-  position: 'absolute',
-});
-
 const New: NextSFC<Props> = ({ albums }) => (
   <ContentSpacing>
     <Nav />
@@ -27,7 +28,11 @@ const New: NextSFC<Props> = ({ albums }) => (
           <Link href={`/album?q=${album.id}`} as={`/album/${album.id}`}>
             <A>
               <Square>
-                <Img_ src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${album.id}.jpg`} />
+                <CoverImg
+                  src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${
+                    album.id
+                  }.jpg`}
+                />
               </Square>
               <Text>{album.name}</Text>
             </A>

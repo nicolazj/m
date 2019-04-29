@@ -5,7 +5,15 @@ import styled from 'styled-components';
 
 import { T_Track } from '@m/shared/dist/types';
 
-import { A, Img, Square, SubText, SubTruncated, Truncated } from '../../primitive';
+import {
+  A,
+  Img,
+  Square,
+  SubText,
+  SubTruncated,
+  Truncated,
+  CoverImg,
+} from '../../primitive';
 import { implode } from '../../utils';
 
 const TrackInfo_ = styled.div({
@@ -17,12 +25,6 @@ const TrackInfo_ = styled.div({
 const AlbumCover_ = styled.div({
   height: '100%',
   width: 80,
-});
-const Img_ = styled(Img)({
-  height: '100%',
-  width: '100%',
-  position: 'absolute',
-  top: 0,
 });
 
 const SongInfo_ = styled.div({
@@ -48,7 +50,7 @@ const TrackInfo: React.FC<{ track?: T_Track }> = ({ track }) => {
         >
           <A>
             <Square>
-              <Img_
+              <CoverImg
                 src={`//y.gtimg.cn/music/photo_new/T002R300x300M000${
                   track.song.album.id
                 }.jpg`}
