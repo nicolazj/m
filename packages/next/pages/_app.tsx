@@ -11,6 +11,7 @@ import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
 import { isClient, isDev } from '../shared/constants';
 import PlayerProvider from '../shared/ctx/player';
+
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
 });
@@ -28,14 +29,13 @@ const GlobalStyle = createGlobalStyle({
   html: {
     width: '100%',
     height: '100%',
-    fontSize: 'calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)))',
+    fontSize: 'calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))',
     fontFamily:
       '-apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei",  sans-serif;',
   },
   body: {
     width: '100%',
     height: '100%',
-    overscrollBehavior: 'none',
   },
   '#__next': {
     width: '100%',
@@ -87,7 +87,11 @@ class MyApp extends App {
         <Normalize />
         <GlobalStyle />
         <PlayerProvider>
-          <Layout sidebar={<Sidebar />} player={<Player />} page={<Component {...pageProps} />} />
+          <Layout
+            sidebar={<Sidebar />}
+            player={<Player />}
+            page={<Component {...pageProps} />}
+          />
         </PlayerProvider>
       </Container>
     );

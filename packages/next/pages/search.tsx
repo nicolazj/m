@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import agent from '../shared/agent';
 import { H1, ContentSpacing } from '../shared/primitive';
-import { T_Album, T_Singer, T_Song, T_Playlist, T_SearchResult } from '@m/shared/dist/types';
+import { T_SearchResult } from '@m/shared/dist/types';
 import ArtistList from '../shared/components/ArtistList';
 import SongList from '../shared/components/SongList';
 import AlbumList from '../shared/components/AlbumList';
@@ -13,10 +13,11 @@ const SearchInput_ = styled.input({
   backgroundColor: '#282828',
   width: '100%',
   border: 'none',
-  fontSize: 36,
+  fontSize: '2em',
   outline: 'none',
-  padding: 24,
+  padding: '1.5em',
   caretColor: '#1db954',
+  borderRadius: 0,
   color: '#fff',
   height: 100,
 });
@@ -49,6 +50,7 @@ const Search = () => {
     <div>
       <SearchInput_
         placeholder="搜索"
+        autoFocus
         onChange={e => {
           setQ(e.target.value);
         }}

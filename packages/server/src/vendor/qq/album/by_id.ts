@@ -118,9 +118,10 @@ export default async (albumId: string) => {
   }));
 
   return {
+    id: data.mid,
     desc: data.desc,
     name: data.name,
-
+    releasedAt: data.aDate,
     singer: {
       id: data.singermid,
       name: data.singername,

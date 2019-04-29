@@ -7,9 +7,7 @@ import PlayButton from '../shared/components/PlayButton';
 import SongList from '../shared/components/SongList';
 import {
   A,
-  Cell,
   ContentSpacing,
-  Grid,
   H1,
   Square,
   SubText,
@@ -20,10 +18,9 @@ import { T_Album } from '@m/shared/dist/types';
 import PageLayout from '../shared/components/PageLayout';
 interface Props {
   album: T_Album;
-  albumId: string;
 }
 
-const Album: NextSFC<Props> = ({ album, albumId }) => (
+const Album: NextSFC<Props> = ({ album }) => (
   <ContentSpacing>
     <NextSeo
       config={{
@@ -35,7 +32,7 @@ const Album: NextSFC<Props> = ({ album, albumId }) => (
       head={
         <Square>
           <CoverImg
-            src={`//y.gtimg.cn/music/photo_new/T002R800x800M000${albumId}.jpg`}
+            src={`//y.gtimg.cn/music/photo_new/T002R800x800M000${album.id}.jpg`}
           />
         </Square>
       }
@@ -48,6 +45,9 @@ const Album: NextSFC<Props> = ({ album, albumId }) => (
           >
             <SubText as={A}>{album.singer.name}</SubText>
           </Link>
+          <div>
+            <SubText>{album.releasedAt}</SubText>
+          </div>
           <PlayButton songs={album.songs} />
         </>
       }

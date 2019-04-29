@@ -10,6 +10,7 @@ const UL_ = styled.ul({
   listStyle: 'none',
   display: 'flex',
   justifyContent: 'center',
+  padding: 0,
 });
 const LI_ = styled.li<{ current?: boolean }>(({ current }) => ({
   ...margin(10),

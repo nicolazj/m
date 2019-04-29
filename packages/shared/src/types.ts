@@ -20,6 +20,7 @@ export interface T_Album {
   id: string;
   name: string;
   desc: string;
+  releaseAt: string;
   songs: T_Song[];
   singer: {
     id: string;
