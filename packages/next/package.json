@@ -8,6 +8,7 @@
   "dependencies": {
     "@m/shared": "*",
     "@rebass/grid": "^6.0.0",
+    "@sentry/browser": "^5.1.1",
     "@types/next": "^8.0.1",
     "@types/next-seo": "^1.10.0",
     "@types/nprogress": "^0.0.29",

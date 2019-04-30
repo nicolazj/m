@@ -1,13 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
-import { H1, H2, ContentSpacing, Square, Grid, Cell, A } from '../shared/primitive';
+import {
+  H1,
+  H2,
+  ContentSpacing,
+  Square,
+  Grid,
+  Cell,
+  A,
+} from '../shared/primitive';
 import styled from 'styled-components';
 import { linearGradient, padding } from 'polished';
 import Nav from '../shared/components/Nav';
 const charts = [
   {
     name: '推荐榜单',
-    list: [{ name: '流行', id: 4 }, { name: '热歌', id: 26 }, { name: '新歌', id: 27 }],
+    list: [
+      { name: '流行', id: 4 },
+      { name: '热歌', id: 26 },
+      { name: '新歌', id: 27 },
+    ],
   },
   {
     name: '地区榜',
@@ -66,7 +78,7 @@ export default () => (
         <H1>{chart.name}</H1>
         <Grid>
           {chart.list.map(c => (
-            <Cell key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]} p={2}>
+            <Cell key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]}>
               <Square>
                 <Link href={`/chart?q=${c.id}`} as={`/chart/${c.id}`}>
                   <A>
