@@ -11,6 +11,7 @@ import Player from '../shared/components/Player';
 import Sidebar from '../shared/components/Sidebar';
 import { isClient, isDev } from '../shared/constants';
 import PlayerProvider from '../shared/ctx/player';
+import { captureException } from '../shared/sentry';
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
@@ -68,15 +69,21 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       try {
         pageProps = await Component.getInitialProps(ctx);
-      } catch (promise) {
-        if (promise.then) {
-          await promise;
+      } catch (errorOrPromise) {
+        if (errorOrPromise.then) {
+          await errorOrPromise;
           pageProps = await Component.getInitialProps(ctx);
+        } else {
+          captureException(errorOrPromise, ctx);
         }
       }
     }
 
     return { pageProps };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    captureException(error, { errorInfo });
   }
 
   render() {
