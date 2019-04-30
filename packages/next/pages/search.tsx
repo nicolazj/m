@@ -1,25 +1,27 @@
+import _debounce from 'lodash.debounce';
+import { padding } from 'polished';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import agent from '../shared/agent';
-import { H1, ContentSpacing } from '../shared/primitive';
 import { T_SearchResult } from '@m/shared/dist/types';
-import ArtistList from '../shared/components/ArtistList';
-import SongList from '../shared/components/SongList';
+
+import agent from '../shared/agent';
 import AlbumList from '../shared/components/AlbumList';
+import ArtistList from '../shared/components/ArtistList';
 import PlayListList from '../shared/components/PlayListList';
+import SongList from '../shared/components/SongList';
+import { ContentSpacing, H1 } from '../shared/primitive';
 
 const SearchInput_ = styled.input({
   backgroundColor: '#282828',
   width: '100%',
   border: 'none',
-  fontSize: '2em',
+  fontSize: '2rem',
   outline: 'none',
-  padding: '1.5em',
+  ...padding('1rem', '1rem'),
   caretColor: '#1db954',
   borderRadius: 0,
   color: '#fff',
-  height: 100,
 });
 
 const Search = () => {
@@ -45,15 +47,17 @@ const Search = () => {
     };
   }, [q]);
 
+  const handleInput = _debounce((q: string) => {
+    setQ(q);
+  }, 500);
+
   const { songs, albums, singers, playlists } = quickResult;
   return (
     <div>
       <SearchInput_
         placeholder="搜索"
         autoFocus
-        onChange={e => {
-          setQ(e.target.value);
-        }}
+        onChange={e => handleInput(e.target.value)}
       />
 
       <ContentSpacing>

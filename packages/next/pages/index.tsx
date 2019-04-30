@@ -1,17 +1,11 @@
-import React from 'react';
 import Link from 'next/link';
-import {
-  H1,
-  H2,
-  ContentSpacing,
-  Square,
-  Grid,
-  Cell,
-  A,
-} from '../shared/primitive';
-import styled from 'styled-components';
 import { linearGradient, padding } from 'polished';
+import React from 'react';
+import styled from 'styled-components';
+
 import Nav from '../shared/components/Nav';
+import { A, Cell, ContentSpacing, Grid, H1, H2, Square } from '../shared/primitive';
+
 const charts = [
   {
     name: '推荐榜单',
@@ -63,12 +57,16 @@ const FancyBox = styled.div({
   top: 0,
   width: '100%',
   height: '100%',
-  ...padding(24),
+  ...padding('1rem'),
   ...linearGradient({
     colorStops: ['#8360c3', ' #2ebf91'],
     toDirection: 'to  right bottom',
     fallback: '#f12711',
   }),
+});
+
+const H2_ = styled(H2)({
+  margin: 0,
 });
 export default () => (
   <ContentSpacing>
@@ -78,12 +76,12 @@ export default () => (
         <H1>{chart.name}</H1>
         <Grid>
           {chart.list.map(c => (
-            <Cell key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 6]}>
+            <Cell key={c.id} width={[1 / 2, 1 / 3, 1 / 4, 1 / 5]}>
               <Square>
                 <Link href={`/chart?q=${c.id}`} as={`/chart/${c.id}`}>
                   <A>
                     <FancyBox>
-                      <H2> {c.name}</H2>
+                      <H2_> {c.name}</H2_>
                     </FancyBox>
                   </A>
                 </Link>

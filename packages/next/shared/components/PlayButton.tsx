@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Wrapper_ = styled.div({
-  ...margin('1em'),
+  ...margin('1rem'),
 });
 const PlayButton: React.FC<Props> = ({ songs }) => {
   const play = (songs: T_Song[]) => {

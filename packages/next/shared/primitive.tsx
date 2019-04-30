@@ -18,7 +18,7 @@ export const Cell = styled(Box).attrs(({ p }) => ({ p: p ? p : 2 }))({
 });
 
 export const ContentSpacing = styled.div({
-  ...padding(0, 24, 0, 24),
+  ...padding(0, '1rem', 0, '1rem'),
 });
 
 export const Square = styled.div({

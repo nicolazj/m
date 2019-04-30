@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle({
   html: {
     width: '100%',
     height: '100%',
-    fontSize: 'calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))',
+    fontSize: 'calc(14px + (18 - 14) * ((100vw - 300px) / (1600 - 300)))',
     fontFamily:
       '-apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei",  sans-serif;',
   },

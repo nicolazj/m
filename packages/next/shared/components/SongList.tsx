@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Song_ = styled.div({
-  ...padding(10),
+  ...padding('0.5rem'),
   textAlign: 'left',
   position: 'relative',
   ':hover': {
@@ -30,8 +30,8 @@ const PlayIcon = styled.button({
   outline: 'none',
   background: 'none',
   padding: 0,
-  width: 40,
-  height: 40,
+  width: '2.5rem',
+  height: '2.5rem',
   color: '#fff',
   opacity: 0.6,
   position: 'absolute',

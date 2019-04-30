@@ -20,7 +20,7 @@ const Icon_ = styled.div<Props>(props => ({
     fontFamily: 'icon',
     fontStyle: 'normal',
     fontWeight: '400',
-    fontSize: '1.5em',
+    fontSize: '1.5rem',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     lineHeight: 'inherit',
